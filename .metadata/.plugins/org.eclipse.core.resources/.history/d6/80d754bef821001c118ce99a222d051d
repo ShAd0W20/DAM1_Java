@@ -1,0 +1,17 @@
+
+public class MultipleSelection2 {
+
+	public static void main(String[] args) {
+		double fondariaPiscina = 0.0;
+		int tipoPiscina = 0;
+		double diametroPiscina = 0.0;
+		double radioPiscina = diametroPiscina/2;
+		double volumenMetrosPiscina = 0.0;
+		double ladoLargoPiscina = 0.0;
+		double ladoCortoPiscina = 0.0;
+		double Pi = Math.PI;
+		
+
+	}
+
+}

@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class SimpleSelection {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		
+		int clientMoney = 0;
+		int descompte = 10;
+		
+		System.out.println("Quants diners has pagat?");
+		
+		clientMoney = input.nextInt();
+		input.nextLine();
+		
+		if(clientMoney >= 100) {
+			clientMoney
+		}
+
+	}
+
+}

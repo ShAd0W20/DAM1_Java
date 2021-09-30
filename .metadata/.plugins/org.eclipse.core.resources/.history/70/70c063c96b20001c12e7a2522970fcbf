@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class SimpleSelection {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		
+		int productCost = 0;
+		float descompte = (float) 0.10;
+		int finalPrice = 0;
+		
+		System.out.println("Quants diners costa el producte?");
+		
+		productCost = input.nextInt();
+		input.nextLine();
+		
+		if(productCost >= 100) {
+			finalPrice = (int) (productCost * descompte);
+		}
+		
+		System.out.println();
+
+	}
+
+}

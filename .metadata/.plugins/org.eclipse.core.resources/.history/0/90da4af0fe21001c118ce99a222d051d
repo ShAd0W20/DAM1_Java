@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+public class MultipleSelection2 {
+
+	public static void main(String[] args) {
+		/*Constantes*/
+		double Pi = Math.PI;
+		Scanner input = new Scanner(System.in);
+		int precioAgua = 25;
+
+		int tipoPiscina = 0; /*1: redonda; 2: rectangular; 3: triangular;*/
+		double profundidadPiscina = 0.0;
+		double volumenMetrosCubicosPiscina = 0.0;
+		
+		/*Piscina redonda*/
+		double diametroPiscina = 0.0;
+		
+		/*Piscina rectangular*/
+		double ladoLargoPiscina = 0.0;
+		double ladoCortoPiscina = 0.0;
+
+		/*Piscina triangular*/
+		double basePiscina = 0.0;
+		double alturaPiscina = 0.0;
+		
+		
+		
+		System.out.println("Di la profundidad maxima de la piscina");
+		
+		profundidadPiscina = input.nextDouble();
+		input.nextLine();
+		
+		System.out.println("Que tipo de piscina desea: \n 1: Redonda \n 2: Rectangular \n 3: Triangular");
+		
+		tipoPiscina = input.nextInt();
+		input.nextLine();
+		
+		switch (tipoPiscina) {
+			case 1:
+				System.out.println("Introduce el diametro de la piscina");
+				diametroPiscina = input.nextDouble();
+				input.nextLine();				
+
+				double radioPiscina = diametroPiscina/2;
+				
+				volumenMetrosPiscina = Pi*(Math.pow(radioPiscina, 2))*profundidadPiscina;
+				
+				break;
+			case 2:
+				System.out.println("Medida lado largo de la piscina");
+				ladoLargoPiscina = input.nextDouble();
+				input.nextLine();
+				
+				System.out.println("Medida lado corto de la piscina");
+				ladoCortoPiscina = input.nextDouble();
+				input.nextLine();
+				
+				volumenMetrosPiscina = ladoLargoPiscina*ladoCortoPiscina*profundidadPiscina;
+				
+				break;
+			case 3:
+				System.out.println("Medida de la base del triangulo");
+				basePiscina = input.nextDouble();
+				input.nextLine();
+				
+				System.out.println("Medida de la altura del triangulo");
+				alturaPiscina = input.nextDouble();
+				input.nextLine();
+				
+				volumenMetrosPiscina = ((basePiscina*alturaPiscina)/2)*profundidadPiscina;
+				
+				break;
+			default:
+				System.out.println("No disponemos del tipo de piscina introducido");
+				break;
+		}
+		
+		input.close();
+
+		System.out.println("Per omplir la piscina escollida necessitaràs " + volumenMetrosPiscina + " litres d’aigua que tenen un cost de " + precioAgua*volumenMetrosPiscina + " Euros.");
+		
+	}
+
+}

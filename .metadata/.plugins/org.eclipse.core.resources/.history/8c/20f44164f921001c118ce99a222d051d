@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class MultipleSelection2 {
+
+	public static void main(String[] args) {
+		int tipoPiscina = 0; /*1: redonda; 2: rectangular; 3: triangular;*/
+		double fondariaPiscina = 0.0;
+		double volumenMetrosPiscina = 0.0;
+		
+		/*Piscina Redonda*/
+		double diametroPiscina = 0.0;
+		double radioPiscina = diametroPiscina/2;
+		
+		/*Piscina rectangular*/
+		double ladoLargoPiscina = 0.0;
+		double ladoCortoPiscina = 0.0;
+
+		
+		
+		
+		double Pi = Math.PI;
+		Scanner input = new Scanner(System.in);
+		
+		
+		
+		
+		
+		
+		input.close();
+
+	}
+
+}
