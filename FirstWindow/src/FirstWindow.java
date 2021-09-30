@@ -16,8 +16,8 @@ public class FirstWindow extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField userNameField;
+	private JTextField passwordFiel;
 
 	/**
 	 * Launch the application.
@@ -47,36 +47,40 @@ public class FirstWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Login");
-		JLabel etiqueta = new JLabel("");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton loggInButton = new JButton("Login");
+		loggInButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				etiqueta.setText("Has pulsado el botón ");	
+				String userName = userNameField.getText();
+				String passwd = passwordFiel.getText();
+				
+				if(userName.equals("shad0wstv") && passwd.equals("1234")) {
+					System.out.println("Logged in");
+				}
 			}
 		});
-		btnNewButton.setBounds(115, 169, 89, 23);
-		contentPane.add(btnNewButton);
+		loggInButton.setBounds(115, 169, 89, 23);
+		contentPane.add(loggInButton);
 		
-		JLabel lblNewLabel = new JLabel("Username");
-		lblNewLabel.setBounds(33, 49, 61, 14);
-		contentPane.add(lblNewLabel);
+		JLabel userNameLabel = new JLabel("Username");
+		userNameLabel.setBounds(33, 49, 61, 14);
+		contentPane.add(userNameLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Password");
-		lblNewLabel_1.setBounds(33, 112, 61, 14);
-		contentPane.add(lblNewLabel_1);
+		JLabel passwordLabel = new JLabel("Password");
+		passwordLabel.setBounds(33, 112, 61, 14);
+		contentPane.add(passwordLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(115, 46, 254, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		userNameField = new JTextField();
+		userNameField.setBounds(115, 46, 254, 20);
+		contentPane.add(userNameField);
+		userNameField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(115, 109, 254, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		passwordFiel = new JTextField();
+		passwordFiel.setBounds(115, 109, 254, 20);
+		contentPane.add(passwordFiel);
+		passwordFiel.setColumns(10);
 		
-		JButton btnNewButton_1 = new JButton("Cancel");
-		btnNewButton_1.setBounds(280, 169, 89, 23);
-		contentPane.add(btnNewButton_1);
+		JButton cancelButton = new JButton("Cancel");
+		cancelButton.setBounds(280, 169, 89, 23);
+		contentPane.add(cancelButton);
 	}
 }
