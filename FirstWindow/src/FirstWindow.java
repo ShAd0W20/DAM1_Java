@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,6 +9,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class FirstWindow extends JFrame {
 
@@ -62,6 +66,7 @@ public class FirstWindow extends JFrame {
 		contentPane.add(loggInButton);
 		
 		JLabel userNameLabel = new JLabel("Username");
+		userNameLabel.setForeground(Color.BLACK);
 		userNameLabel.setBounds(33, 49, 61, 14);
 		contentPane.add(userNameLabel);
 		
@@ -82,5 +87,31 @@ public class FirstWindow extends JFrame {
 		JButton cancelButton = new JButton("Cancel");
 		cancelButton.setBounds(280, 169, 89, 23);
 		contentPane.add(cancelButton);
+		
+		JToggleButton tglbtnNewToggleButton = new JToggleButton("Change Theme");
+		tglbtnNewToggleButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Color lightBackgroundColor = new Color(255, 255, 255);
+				Color darkBackgroundColor = new Color(40, 40, 40);
+				
+				if(tglbtnNewToggleButton.isSelected()) {
+					contentPane.setBackground(darkBackgroundColor);
+					userNameLabel.setForeground(new Color(255, 255, 255));
+					passwordLabel.setForeground(new Color(255, 255, 255));
+				}
+				else {
+					contentPane.setBackground(lightBackgroundColor);
+					userNameLabel.setForeground(new Color(0, 0, 0));
+					passwordLabel.setForeground(new Color(0, 0, 0));
+				}
+			}
+		});
+		tglbtnNewToggleButton.setBounds(115, 227, 121, 23);
+		contentPane.add(tglbtnNewToggleButton);
+		
+		JComboBox<Object> comboBox = new JComboBox<Object>();
+		comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"Compactos", "Coupes", "Motos", "Muscle", "Off-Road", "Sedan", "Sport", "Sport Classic", "Super"}));
+		comboBox.setBounds(280, 227, 89, 22);
+		contentPane.add(comboBox);
 	}
 }
