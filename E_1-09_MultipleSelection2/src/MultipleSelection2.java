@@ -77,7 +77,7 @@ public class MultipleSelection2 {
 		
 		input.close();
 
-		System.out.println("Per omplir la piscina escollida necessitaràs " + volumenMetrosCubicosPiscina + " litres d’aigua que tenen un cost de " + precioAgua*volumenMetrosCubicosPiscina + " Euros.");
+		System.out.println("Para llenar la piscina necesitaras " + volumenMetrosCubicosPiscina + " litros de agua que tienen un precio de " + precioAgua*volumenMetrosCubicosPiscina + " Euros.");
 		
 	}
 
