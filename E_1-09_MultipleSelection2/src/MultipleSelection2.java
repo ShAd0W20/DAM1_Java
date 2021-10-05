@@ -72,7 +72,6 @@ public class MultipleSelection2 {
 				break;
 			default:
 				System.out.println("No disponemos del tipo de piscina introducido");
-				break;
 		}
 		
 		input.close();
