@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class GestionVideojuegos {
 
 	public static void main(String[] args) {
-
 		Scanner input = new Scanner(System.in); // Scanner to use for user input from the console
 
 		String[] gameName = new String[5]; // String array to store game names
@@ -14,6 +13,8 @@ public class GestionVideojuegos {
 
 		String menuOption = ""; // string to know what's the user option
 		String listGameCategory = "";  // String used to difference between gameCategory boolean
+		String userChangeOption = ""; //String variable to know value to change
+		String userInputGameName = ""; // String variable to know what game user whant's to update
 
 		System.out.println("Introduce que desea hacer: \n 1 - Guardar un juego \n 2 - Modificar datos de un juego \n 3 - Lista de todos los juegos \n 'Salir' para salir del programa");
 		do {
@@ -48,17 +49,16 @@ public class GestionVideojuegos {
 				break;
 			case "2":
 				System.out.println("Introduce el nombre del juego a modificar"); //ask user what game whant's to change
-				String userInputGameName = input.nextLine(); //store user input into the variable
+				userInputGameName = input.nextLine(); //store user input into the variable
 				
 				int i = 0; // integer used to know array index equals to user input
-				while(!gameName[i].equals(userInputGameName)) { // loop throw all array while user input not equals game name			
+				while(!userInputGameName.equals(gameName[i]) && i < totalGamesInArray) {// loop throw all array while user input not equals game name					
 					i++;
-				}				
-				if(gameName[i].equals(userInputGameName)) { // if finds game name equals to user input do:
+				}
+				if(userInputGameName.equals(gameName[i])) { // if finds game name equals to user input do:
 					
 					System.out.println("Que valor quieres modificar? \n 1: Precio \n 2: Categoria"); // ask what value to change
 					
-					String userChangeOption = ""; //String variable to know value to change
 					userChangeOption = input.nextLine(); // store user input into the variable
 					
 					switch(userChangeOption) { // switch between user input value
@@ -72,7 +72,6 @@ public class GestionVideojuegos {
 							} else {
 								listGameCategory = "-18";
 							}
-							System.out.println(gameName[i] + " " + gamePrice[i] + " " + listGameCategory + " : Videojuego actualizado"); // print the new values of the game
 							break;
 						case "2": // case user input == 1 change game category
 							System.out.println("Introduce la nueva categorya para " + gameName[i] + "\n ture: +18 \n false: -18"); // ask the new category for the game
@@ -84,13 +83,13 @@ public class GestionVideojuegos {
 							} else {
 								listGameCategory = "-18";
 							}
-							System.out.println(gameName[i] + " " + gamePrice[i] + " " + listGameCategory + " : Videojuego actualizado"); // print the new values of the game
 							break;
 					}
+					
+					System.out.println(gameName[i] + " " + gamePrice[i] + " " + listGameCategory + " : Videojuego actualizado \n Pulse enter para salir la menu"); // print the new values of the game	
 				} else {
 					System.out.println("El juego " + userInputGameName + " no existe \n Pulse enter para salir al menu.");					
 				}
-				
 				break;
 			case "3":
 				System.out.println("Actualmente tienes " + totalGamesInArray + " juegos registrados"); // print the total games stored in the array
@@ -106,11 +105,14 @@ public class GestionVideojuegos {
 				System.out.println("\n Pulse enter para salir al menu.");
 				break;
 			default:
-				System.out.println("Introduce que desea hacer: \n 1 - Guardar un juego \n 2 - Modificar datos de un juego \n 3 - Lista de todos los juegos \n 'Salir' para salir del programa");
+				if(!menuOption.toLowerCase().equals("salir")) {
+					System.out.println("Introduce que desea hacer: \n 1 - Guardar un juego \n 2 - Modificar datos de un juego \n 3 - Lista de todos los juegos \n 'Salir' para salir del programa");					
+				}
 			}
 
 		} while (!menuOption.toLowerCase().equals("salir"));
 
 		input.close();
+		System.out.println("Has salido del programa");
 	}
 }
