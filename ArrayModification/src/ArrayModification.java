@@ -8,6 +8,8 @@ public class ArrayModification {
 		String[] userNames = new String[10];
 		int[] userAges = new int[10];
 		
+		
+		
 		int totalUsers = 7;
 		int arrayIndexToDelete = 0;
 		
