@@ -20,9 +20,15 @@ public class FirstWindow extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField userNameField;
-	private JTextField passwordFiel;
+	private JTextField inputNewGameName;
+	private JTextField inputNewGamePrice;
 
+	private String[] gameName = new String[5]; // String array to store game names
+	private double[] gamePrice = new double[5]; // double array to store game prices
+	private boolean[] gameCategory = new boolean[5]; // boolean array to store if the games is +18 or not
+	private int totalGamesInArray = 0; // integer to know how many games have we stored in the arrays
+	private String userInputGameCategory = "";
+	private String listGameCategory = "";  // String used to difference between gameCategory boolean
 	/**
 	 * Launch the application.
 	 */
@@ -37,12 +43,17 @@ public class FirstWindow extends JFrame {
 				}
 			}
 		});
+
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public FirstWindow() {
+		
+		
+
+		
 		setTitle("shad0wstv");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -50,68 +61,90 @@ public class FirstWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		JComboBox<Object> userAction = new JComboBox<Object>();
+		userAction.setModel(new DefaultComboBoxModel<Object>(new String[] { "Selecciona que hacer:", "Guardar juego", "Modificar juego", "Listar juegos" }));
+		userAction.setBounds(20, 11, 140, 22);
+		contentPane.add(userAction);
 		
-		JButton loggInButton = new JButton("Login");
-		loggInButton.addActionListener(new ActionListener() {
+		inputNewGameName = new JTextField();
+		inputNewGameName.setBounds(224, 57, 140, 20);
+		contentPane.add(inputNewGameName);
+		inputNewGameName.setColumns(10);
+		
+		JLabel lblNombreDelJuego = new JLabel("Nombre del juego:");
+		lblNombreDelJuego.setBounds(20, 60, 176, 14);
+		contentPane.add(lblNombreDelJuego);
+		
+		JLabel lblPrecioDelJuego = new JLabel("Precio del juego:");
+		lblPrecioDelJuego.setBounds(20, 91, 176, 14);
+		contentPane.add(lblPrecioDelJuego);
+		
+		inputNewGamePrice = new JTextField();
+		inputNewGamePrice.setColumns(10);
+		inputNewGamePrice.setBounds(224, 88, 140, 20);
+		contentPane.add(inputNewGamePrice);
+		
+		JLabel lblCategoriaDelJuego = new JLabel("Categoria del juego:");
+		lblCategoriaDelJuego.setBounds(20, 128, 176, 14);
+		contentPane.add(lblCategoriaDelJuego);
+		
+		JComboBox gameCategorySelector = new JComboBox();
+		gameCategorySelector.setModel(new DefaultComboBoxModel(new String[] {"", "+18", "-18"}));
+		gameCategorySelector.setBounds(224, 124, 140, 22);
+		contentPane.add(gameCategorySelector);
+		
+		JButton btnNewButton = new JButton("Guardar");
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String userName = userNameField.getText();
-				String passwd = passwordFiel.getText();
-				
-				if(userName.equals("shad0wstv") && passwd.equals("1234")) {
-					System.out.println("Logged in");
-				}
 			}
 		});
-		loggInButton.setBounds(115, 169, 89, 23);
-		contentPane.add(loggInButton);
-		
-		JLabel userNameLabel = new JLabel("Username");
-		userNameLabel.setForeground(Color.BLACK);
-		userNameLabel.setBounds(33, 49, 61, 14);
-		contentPane.add(userNameLabel);
-		
-		JLabel passwordLabel = new JLabel("Password");
-		passwordLabel.setBounds(33, 112, 61, 14);
-		contentPane.add(passwordLabel);
-		
-		userNameField = new JTextField();
-		userNameField.setBounds(115, 46, 254, 20);
-		contentPane.add(userNameField);
-		userNameField.setColumns(10);
-		
-		passwordFiel = new JTextField();
-		passwordFiel.setBounds(115, 109, 254, 20);
-		contentPane.add(passwordFiel);
-		passwordFiel.setColumns(10);
-		
-		JButton cancelButton = new JButton("Cancel");
-		cancelButton.setBounds(280, 169, 89, 23);
-		contentPane.add(cancelButton);
-		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("Change Theme");
-		tglbtnNewToggleButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Color lightBackgroundColor = new Color(255, 255, 255);
-				Color darkBackgroundColor = new Color(40, 40, 40);
+		btnNewButton.setBounds(275, 171, 89, 23);
+		contentPane.add(btnNewButton);
+
+		ActionListener actionListener = new ActionListener() {
+			public void actionPerformed(ActionEvent actionEvent) {
+
 				
-				if(tglbtnNewToggleButton.isSelected()) {
-					contentPane.setBackground(darkBackgroundColor);
-					userNameLabel.setForeground(new Color(255, 255, 255));
-					passwordLabel.setForeground(new Color(255, 255, 255));
-				}
-				else {
-					contentPane.setBackground(lightBackgroundColor);
-					userNameLabel.setForeground(new Color(0, 0, 0));
-					passwordLabel.setForeground(new Color(0, 0, 0));
+				switch(userAction.getSelectedIndex()) {
+					case 1:
+						System.out.println("Guardar un juego");
+						lblNombreDelJuego.setText("Nombre del juego:");
+						lblPrecioDelJuego.setText("Precio del juego:");
+						lblCategoriaDelJuego.setText("Categoria del juego:");
+						
+						if (totalGamesInArray == 5) { // If array is full exit
+							System.out.println("No puedes guardar mas juegos");
+						} else {
+							gameName[totalGamesInArray] = inputNewGameName.getText(); // store user input game name to array index with value of totalGamesInArray (first input should be  totalGamesInArray = 0)
+		
+							gamePrice[totalGamesInArray] = Double.parseDouble(inputNewGamePrice.getText());// store user input game price to array index with value of totalGamesInArray
+		
+							userInputGameCategory = String.valueOf(gameCategorySelector.getSelectedItem()); // store user input game category
+							
+							gameCategory[totalGamesInArray] = (userInputGameCategory.equals("+18")) ? true : false; // if userInputGameCategory variable == s set boolean gameCategory with index of totalGamesInArray to TRUE else FALSE
+								
+							System.out.println(gameName[totalGamesInArray] + " " + gamePrice[totalGamesInArray] + " " + listGameCategory + " : Videojuego guardado"); // print game data stored into the arrays
+							
+							totalGamesInArray++; // plus 1 to totalGamesInArray
+						}
+						break;
+					case 2:
+						System.out.println("Modificar un juego");
+						lblNombreDelJuego.setText("Nombre juego a modificar:");
+						lblPrecioDelJuego.setText("Nuevo precio del juego:");
+						lblCategoriaDelJuego.setText("Nueva categoria del juego:");
+						break;
+					case 3:
+						System.out.println("Listar los juegos");			
+						break;
+					default:
+						System.out.println("Selecciona un juego");
 				}
 			}
-		});
-		tglbtnNewToggleButton.setBounds(115, 227, 121, 23);
-		contentPane.add(tglbtnNewToggleButton);
+		};
+		userAction.addActionListener(actionListener);
 		
-		JComboBox<Object> comboBox = new JComboBox<Object>();
-		comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"Compactos", "Coupes", "Motos", "Muscle", "Off-Road", "Sedan", "Sport", "Sport Classic", "Super"}));
-		comboBox.setBounds(280, 227, 89, 22);
-		contentPane.add(comboBox);
+		
 	}
 }
