@@ -12,10 +12,10 @@ public class GestionVideojuegos {
 		int totalGamesInArray = 0; // integer to know how many games have we stored in the arrays
 
 		String menuOption = ""; // string to know what's the user option in the main menu
-		String listGameCategory = "";  // String used to difference between gameCategory boolean
-		String userInputGameName = ""; // String variable to know what game user whant's to update
+		String listStudentRepeater = "";  // String used to difference between gameCategory boolean
+		String userInputStudentName = ""; // String variable to know what game user whant's to update
 		char userChangeOption = '0'; //char variable to know what value to change
-		char userInputGameCategory = '0'; //char variable to get user input new game category
+		char userInputStudentRepeater = '0'; //char variable to get user input new game category
 
 		System.out.println("Introduce que desea hacer: \n 1 - Guardar un juego \n 2 - Modificar datos de un juego \n 3 - Lista de todos los juegos \n 'Salir' para salir del programa");
 		do {
@@ -34,13 +34,13 @@ public class GestionVideojuegos {
 						input.nextLine();
 	
 						System.out.println("Introduce \n 'S' si es +18 \n 'N' si es -18"); // ask if game is +18 or not
-						userInputGameCategory = input.nextLine().charAt(0); // store user input game category
+						userInputStudentRepeater = input.nextLine().charAt(0); // store user input game category
 						
-						gameCategory[totalGamesInArray] = (Character.toLowerCase(userInputGameCategory) == 's') ? true : false; // if userInputGameCategory variable == s set boolean gameCategory with index of totalGamesInArray to TRUE else FALSE
+						gameCategory[totalGamesInArray] = (Character.toLowerCase(userInputStudentRepeater) == 's') ? true : false; // if userInputStudentRepeater variable == s set boolean gameCategory with index of totalGamesInArray to TRUE else FALSE
 						
-						listGameCategory = (gameCategory[totalGamesInArray] == true) ? "+18" : "-18"; // if gameCategory index is true set listGameCateogry variable == +18 else set it to -18
+						listStudentRepeater = (gameCategory[totalGamesInArray] == true) ? "+18" : "-18"; // if gameCategory index is true set listGameCateogry variable == +18 else set it to -18
 						
-						System.out.println(gameName[totalGamesInArray] + " " + gamePrice[totalGamesInArray] + " " + listGameCategory + " : Videojuego guardado"); // print game data stored into the arrays
+						System.out.println(gameName[totalGamesInArray] + " " + gamePrice[totalGamesInArray] + " " + listStudentRepeater + " : Videojuego guardado"); // print game data stored into the arrays
 	
 						totalGamesInArray++; // plus 1 to totalGamesInArray
 						System.out.println("\n Actualmente tienes " + totalGamesInArray + " juegos guardados \n\n Pulse enter para salir al menu."); // print the total games stored
@@ -48,13 +48,13 @@ public class GestionVideojuegos {
 					break;
 				case "2":
 					System.out.println("Introduce el nombre del juego a modificar"); //ask user what game whant's to change
-					userInputGameName = input.nextLine(); //store user input into the variable
+					userInputStudentName = input.nextLine(); //store user input into the variable
 					
 					int i = 0; // integer used to know array index equals to user input
-					while(!userInputGameName.toLowerCase().equals(gameName[i].toLowerCase()) && i < totalGamesInArray) {// loop throw total games in array while user input not equals game name					
+					while(!userInputStudentName.toLowerCase().equals(gameName[i].toLowerCase()) && i < totalGamesInArray) {// loop throw total games in array while user input not equals game name					
 						i++;
 					}
-					if(userInputGameName.toLowerCase().equals(gameName[i].toLowerCase())) { // if finds game name equals to user input do:
+					if(userInputStudentName.toLowerCase().equals(gameName[i].toLowerCase())) { // if finds game name equals to user input do:
 						
 						System.out.println("Que valor quieres modificar? \n 1: Precio \n 2: Categoria"); // ask what value to change
 						
@@ -69,18 +69,18 @@ public class GestionVideojuegos {
 								break;
 							case '2': // case user input == 1 change game category
 								System.out.println("Introduce la nueva categorya para " + gameName[i] + "\n 'S' si es +18 \n 'N' si es -18"); // ask the new category for the game
-								userInputGameCategory = input.nextLine().charAt(0); // store user input game category to array index with value of totalGamesInArray
+								userInputStudentRepeater = input.nextLine().charAt(0); // store user input game category to array index with value of totalGamesInArray
 								
-								gameCategory[i] = (Character.toLowerCase(userInputGameCategory) == 's') ? true : false; // if userInputGameCategory variable = s set boolean gameCategory to TRUE else FALSE
+								gameCategory[i] = (Character.toLowerCase(userInputStudentRepeater) == 's') ? true : false; // if userInputStudentRepeater variable = s set boolean gameCategory to TRUE else FALSE
 								
 								break;
 						}
 						
-						listGameCategory = (gameCategory[i] == true) ? "+18" : "-18"; // if gameCategory index is true set listGameCateogry variable = +18 else set it to -18
+						listStudentRepeater = (gameCategory[i] == true) ? "+18" : "-18"; // if gameCategory index is true set listGameCateogry variable = +18 else set it to -18
 						
-						System.out.println(gameName[i] + " " + gamePrice[i] + " " + listGameCategory + " : Videojuego actualizado \n Pulse enter para salir la menu"); // print the new values of the game	
+						System.out.println(gameName[i] + " " + gamePrice[i] + " " + listStudentRepeater + " : Videojuego actualizado \n Pulse enter para salir la menu"); // print the new values of the game	
 					} else {
-						System.out.println("El juego " + userInputGameName + " no existe \n Pulse enter para salir al menu."); // if user input a non existing game print game does not exists
+						System.out.println("El juego " + userInputStudentName + " no existe \n Pulse enter para salir al menu."); // if user input a non existing game print game does not exists
 					}
 					
 					break;
@@ -89,9 +89,9 @@ public class GestionVideojuegos {
 	
 					for (int j = 0; j < totalGamesInArray; j++) { // for loop throw totalGamesInArray
 						
-						listGameCategory = (gameCategory[j] == true) ? "+18" : "-18"; // if gameCategory index is true set listGameCateogry variable = +18 else set it to -18
+						listStudentRepeater = (gameCategory[j] == true) ? "+18" : "-18"; // if gameCategory index is true set listGameCateogry variable = +18 else set it to -18
 						
-						System.out.println(gameName[j] + " / " + gamePrice[j] + " / " + listGameCategory); // Print the list of games stored in the array
+						System.out.println(gameName[j] + " / " + gamePrice[j] + " / " + listStudentRepeater); // Print the list of games stored in the array
 					}
 					System.out.println("\n Pulse enter para salir al menu.");
 					break;

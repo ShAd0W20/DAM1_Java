@@ -27,8 +27,8 @@ public class FirstWindow extends JFrame {
 	private double[] gamePrice = new double[5]; // double array to store game prices
 	private boolean[] gameCategory = new boolean[5]; // boolean array to store if the games is +18 or not
 	private int totalGamesInArray = 0; // integer to know how many games have we stored in the arrays
-	private String userInputGameCategory = "";
-	private String listGameCategory = "";  // String used to difference between gameCategory boolean
+	private String userInputStudentRepeater = "";
+	private String listStudentRepeater = "";  // String used to difference between gameCategory boolean
 	/**
 	 * Launch the application.
 	 */
@@ -120,11 +120,11 @@ public class FirstWindow extends JFrame {
 		
 							gamePrice[totalGamesInArray] = Double.parseDouble(inputNewGamePrice.getText());// store user input game price to array index with value of totalGamesInArray
 		
-							userInputGameCategory = String.valueOf(gameCategorySelector.getSelectedItem()); // store user input game category
+							userInputStudentRepeater = String.valueOf(gameCategorySelector.getSelectedItem()); // store user input game category
 							
-							gameCategory[totalGamesInArray] = (userInputGameCategory.equals("+18")) ? true : false; // if userInputGameCategory variable == s set boolean gameCategory with index of totalGamesInArray to TRUE else FALSE
+							gameCategory[totalGamesInArray] = (userInputStudentRepeater.equals("+18")) ? true : false; // if userInputStudentRepeater variable == s set boolean gameCategory with index of totalGamesInArray to TRUE else FALSE
 								
-							System.out.println(gameName[totalGamesInArray] + " " + gamePrice[totalGamesInArray] + " " + listGameCategory + " : Videojuego guardado"); // print game data stored into the arrays
+							System.out.println(gameName[totalGamesInArray] + " " + gamePrice[totalGamesInArray] + " " + listStudentRepeater + " : Videojuego guardado"); // print game data stored into the arrays
 							
 							totalGamesInArray++; // plus 1 to totalGamesInArray
 						}
