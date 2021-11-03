@@ -60,7 +60,7 @@ public class GestionAlumnos {
 										studentStudies[totalStudentsInArray] = "Prueba de acceso";
 										break;
 									default:
-										System.out.println("Valor no valido \n Introduce los estudios del alumno \\n 1: CFGM \\n 2: Bachillerato \\n 3: Prueba de acceso");
+										System.out.println("Valor no valido \n Introduce los estudios del alumno \n 1: CFGM \n 2: Bachillerato \n 3: Prueba de acceso");
 										break;
 									}
 								} while((userStudentSetStudies >= 4));
@@ -119,7 +119,7 @@ public class GestionAlumnos {
 										studentStudies[i] = "Prueba de acceso";
 										break;
 									default:
-										System.out.println("Valor no valido \n Introduce los estudios del alumno \\n 1: CFGM \\n 2: Bachillerato \\n 3: Prueba de acceso");
+										System.out.println("Valor no valido \n Introduce los estudios del alumno \n 1: CFGM \n 2: Bachillerato \n 3: Prueba de acceso");
 										break;
 									}
 								} while((userStudentSetStudies >= 4));
