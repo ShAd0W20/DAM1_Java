@@ -26,11 +26,9 @@ public class Examen2 {
 			switch(menuOption.toLowerCase()) {
 			case "p":
 				System.out.println("Has entrado adivinar una palabra");
-				for(int i = 0; i < maxWinWords; i++ ) {
-					randomWord = rnd.nextInt(5);
-					winWord = adivinaP[randomWord];
-				}
-				//System.out.println(winWord); just testing
+				randomWord = rnd.nextInt(5);
+				winWord = adivinaP[randomWord];
+				//System.out.println(winWord); //just testing
 				
 				System.out.println("Introduce 3 palabras separadas por espacios");
 				for(int i = 0; i < maxWinWords; i++ ) {
