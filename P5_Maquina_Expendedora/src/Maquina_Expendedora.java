@@ -8,7 +8,7 @@ public class Maquina_Expendedora {
 		//Variables region 
 			
 			final int MAX_PRODCUTS_IN_MACHINE = 10;
-			final String STOCK_MANAGER_PASSWORD = "SukaBlyat";
+			final String STOCK_MANAGER_PASSWORD = "DAM1";
 			
 			String[] productName = new String[MAX_PRODCUTS_IN_MACHINE];
 			int[] productPrice = new int[MAX_PRODCUTS_IN_MACHINE];
@@ -73,9 +73,9 @@ public class Maquina_Expendedora {
 						if(totalToPay < 0) {
 							System.out.println("Has pagado de mas aquí tienes tu cambio: " + (((totalToPay + (totalToPay * -2)) / 100)) + "," + (((totalToPay + (totalToPay * -2)) % 100)) + "€");
 						}
-					} while (totalToPay >= 0);
+					} while (totalToPay > 0);
 					
-					productStock[userSelectedProduct]--;
+					productStock[userSelectedProduct - 1]--;
 					
 					System.out.println("Presiona enter para volver al menu");					
 					
