@@ -4,7 +4,6 @@ public class Metodos {
 	static final int MAX_STUDENTS = 5;
 	static final int MAX_GRADES = 3;
 	static String[] studentNames = new String[MAX_STUDENTS];
-	static int[] studentFailedGrades = new int[MAX_STUDENTS];
 	static int[][] studentGrades = new int[MAX_STUDENTS][MAX_GRADES];
 
 	public static void main(String[] args) {
@@ -24,7 +23,7 @@ public class Metodos {
 		String studentNameToSort = "";
 		String[] gradeNames = { "Programacio", "BBDD", "Entorns" };
 
-		for (int k = 0; k < gradeNames.length; k++) {
+		for (int k = 0; k < MAX_GRADES; k++) {
 			for (int i = 0; i < studentNames.length - 1; i++) {
 				for (int j = i + 1; j < studentNames.length; j++) {
 					if (studentGrades[i][k] < studentGrades[j][k]) {
@@ -63,6 +62,7 @@ public class Metodos {
 	}
 
 	static void ShowStudentFinalResults() {
+		int[] studentFailedGrades = new int[MAX_STUDENTS];
 		System.out.println("\n NOTAS");
 		
 		for (int i = 0; i < studentNames.length; i++) {
