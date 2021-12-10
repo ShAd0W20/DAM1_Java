@@ -16,13 +16,13 @@ public class MetodosConParametros {
 		System.out.println(numbers[2]);
 	}
 
-	/*static void ChangeArrayPositionValue(int[] array, int position) {
+	static void ChangeArrayPositionValue(int[] array, int position) {
 		array[position] = 99;
 		System.out.println(array[position]);
-	}*/
+	}
 	
 	static void OneTimeChangeArrayPositionValue(int[] array, int position) {
-		int[] newArray = new int[4];
+		int[] newArray = new int[array.length];
 		for (int i = 0; i < array.length; i++) {
 			newArray[i] = array[i];
 		}
