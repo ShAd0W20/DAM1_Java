@@ -7,6 +7,7 @@
 <item elementID="=Metodos2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=MetodosConParametros" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=Functions" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Functions2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1639060009234_7" label="Programación Lineal" name="Programación Lineal">
 <item elementID="=E_1-17_doWhile2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
