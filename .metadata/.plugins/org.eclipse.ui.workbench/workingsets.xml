@@ -8,6 +8,7 @@
 <item elementID="=MetodosConParametros" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=Functions" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=Functions2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=StreetRaceControl" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1639060009234_7" label="Programación Lineal" name="Programación Lineal">
 <item elementID="=E_1-17_doWhile2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
@@ -35,7 +36,6 @@
 <item elementID="=TimeFunctions" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=E_1-01_Seqüencial" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=First" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=SQL_Connection" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=WhileLoop" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=ArraySort" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=E_1-16_doWhile" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
@@ -48,9 +48,15 @@
 <item elementID="=Examen2.1" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=E_1-05_SimpleSelection2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1639669327724_8" label="Programame" name="Programame">
+<item elementID="=HelloWorld" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ChristmasDay" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SpaceInvader" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=JuegosDeCinta" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1632495010202_2" label="Window Working Set" name="Aggregate for window 1632495010202"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1634656247569_3" label="Window Working Set" name="Aggregate for window 1634656247569"/>
-<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1639060016712_8" label="Multiple Working Sets" name="Aggregate:Programación Lineal:Programación Modular:">
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1639667581923_8" label="Multiple Working Sets" name="Aggregate:Programación Lineal:Programación Modular:">
 <workingSet IMemento.internal.id="Programación Lineal"/>
 <workingSet IMemento.internal.id="Programación Modular"/>
 </workingSet>
