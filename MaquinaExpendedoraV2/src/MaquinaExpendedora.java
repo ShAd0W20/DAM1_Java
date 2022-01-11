@@ -32,7 +32,7 @@ public class MaquinaExpendedora {
 	static void mainMenu(String[] productName, int[] productPrice, int[] productStock, int[] productSells, int availableProductsInMachine, String STOCK_MANAGER_PASSWORD) {
 		String mainMenuOption = "";
 		String passwordEntered = "";
-		System.out.println("[1] Para menu cliente \n[2] Menu gestión \n['Salir'] Para salir del programa");
+		System.out.println("[1] Para menu cliente \n[2] Menu gestiï¿½n \n['Salir'] Para salir del programa");
 		do {
 			mainMenuOption = input.nextLine();
 			switch(mainMenuOption) {
@@ -40,18 +40,18 @@ public class MaquinaExpendedora {
 				clientMenu(productName, productPrice, productStock, productSells, availableProductsInMachine);
 				break;
 			case "2":
-				System.out.println("Introduce la contraseña para entrar");
+				System.out.println("Introduce la contraseï¿½a para entrar");
 				passwordEntered = input.nextLine();
 				
 				if(passwordEntered.equals(STOCK_MANAGER_PASSWORD)) { //if password entered equals password defined in the beginning of the program enter to managerMenu
 					managerMenu(productName, productPrice, productStock, productSells, availableProductsInMachine);
 				} else {
-					System.out.println("Contraseña incorrecta. Pulse 'enter' para volver al menu");
+					System.out.println("Contraseï¿½a incorrecta. Pulse 'enter' para volver al menu");
 				}
 				break;
 			default:
 				if(!mainMenuOption.equalsIgnoreCase("salir")) {
-					System.out.println("[1] Para menu cliente \n[2] Menu gestión \n['Salir'] Para salir del programa");
+					System.out.println("[1] Para menu cliente \n[2] Menu gestiï¿½n \n['Salir'] Para salir del programa");
 				}
 			}
 			
@@ -79,7 +79,7 @@ public class MaquinaExpendedora {
 	static void productsMenu(String[] productName, int[] productPrice, int[] productStock, int availableProductsInMachine) {
 		for(int i = 0; i < availableProductsInMachine; i++) {
 			if(productStock[i] != 0) {
-				System.out.println("[" + (i + 1) + "] Producto: " + productName[i] + " -> " + (productPrice[i] / 100) + "," + (productPrice[i] % 100) + "€");
+				System.out.println("[" + (i + 1) + "] Producto: " + productName[i] + " -> " + (productPrice[i] / 100) + "," + (productPrice[i] % 100) + "ï¿½");
 			}
 		}
 	}
@@ -111,7 +111,7 @@ public class MaquinaExpendedora {
 			}
 		}
 		if(totalToPay > 0) {
-			 return "Te falta por pagar: " + (totalToPay / 100) + "," + (totalToPay % 100) + "€ \nCon que monedas desea pagar, seleccione las monedas con la cantidad separada por '-'";
+			 return "Te falta por pagar: " + (totalToPay / 100) + "," + (totalToPay % 100) + "ï¿½ \nCon que monedas desea pagar, seleccione las monedas con la cantidad separada por '-'";
 		}
 		else if (totalToPay == 0) {
 			productStock[userSelectedProduct]--;
@@ -123,19 +123,19 @@ public class MaquinaExpendedora {
 			productStock[userSelectedProduct]--;
 			productSells[userSelectedProduct]++;
 			totalToPay = 0;
-			return "Has pagado de mas aquí tienes tu cambio: " + (((totalToPay + (totalToPay * -2)) / 100)) + "," + (((totalToPay + (totalToPay * -2)) % 100)) + "€";
+			return "Has pagado de mas aquï¿½ tienes tu cambio: " + (((totalToPay + (totalToPay * -2)) / 100)) + "," + (((totalToPay + (totalToPay * -2)) % 100)) + "ï¿½";
 		}
 	}
 	
-	/*Functions used to calculate the product price and return it as a String. Example: '2,50€'*/
+	/*Functions used to calculate the product price and return it as a String. Example: '2,50ï¿½'*/
 	static String calculateProductPrice(int[] productPrice, int productSelected) {
-		return (productPrice[productSelected] / 100) + "," + (productPrice[productSelected] % 100) + "€";
+		return (productPrice[productSelected] / 100) + "," + (productPrice[productSelected] % 100) + "ï¿½";
 	}
 
 	/*Method that controls the manager menu*/
 	static void managerMenu(String[] productName, int[] productPrice, int[] productStock, int[] productSells, int availableProductsInMachine) {
 		String managerMenuOption = "";
-		System.out.println("[1] Para menu stock \n[2] Menu repostar producto \n[3] Menu recaptación diaria \n[4] Menu reset recapcatión \n['Salir'] Para salir del programa");
+		System.out.println("[1] Para menu stock \n[2] Menu repostar producto \n[3] Menu recaptaciï¿½n diaria \n[4] Menu reset recapcatiï¿½n \n['Salir'] Para salir del programa");
 		do {
 			managerMenuOption = input.nextLine();
 			switch(managerMenuOption) {
@@ -153,7 +153,7 @@ public class MaquinaExpendedora {
 				break;
 			default:
 				if(!managerMenuOption.equalsIgnoreCase("salir")) {
-					System.out.println("[1] Para menu stock \n[2] Menu repostar producto \n[3] Menu recaptación diaria \n[4] Menu reset recapcatión \n['Salir'] Para salir del programa");
+					System.out.println("[1] Para menu stock \n[2] Menu repostar producto \n[3] Menu recaptaciï¿½n diaria \n[4] Menu reset recapcatiï¿½n \n['Salir'] Para salir del programa");
 				}
 			}
 		}while(!managerMenuOption.equalsIgnoreCase("salir"));
@@ -180,7 +180,7 @@ public class MaquinaExpendedora {
 		input.nextLine();
 		
 		/*Ask how many products want's to put in*/
-		System.out.println("Ha seleccionado: " + productName[productToUpdate] + "\nQue cantidad desea añadir?");
+		System.out.println("Ha seleccionado: " + productName[productToUpdate] + "\nQue cantidad desea aï¿½adir?");
 		productNewStock = input.nextInt();
 		input.nextLine();
 		
@@ -194,10 +194,10 @@ public class MaquinaExpendedora {
 	static void managerProductSells(String[] productName, int[] productPrice, int[] productSells, int availableProductsInMachine) {
 		int totalGained = 0;
 		for(int i = 0; i < availableProductsInMachine; i++) {
-			System.out.println("[" + (i + 1) + "] " + productName[i] + " -> " + productSells[i] + " Recaudado: " + ((productPrice[i] * productSells[i]) / 100) + "," + ((productPrice[i] * productSells[i]) % 100) + "€");
+			System.out.println("[" + (i + 1) + "] " + productName[i] + " -> " + productSells[i] + " Recaudado: " + ((productPrice[i] * productSells[i]) / 100) + "," + ((productPrice[i] * productSells[i]) % 100) + "ï¿½");
 			totalGained += (productPrice[i] * productSells[i]); //plus the total gained with the diferent products
 		}
-		System.out.println("\nTOTAL GANADO: " + (totalGained / 100) + "," + (totalGained % 100) + "€");
+		System.out.println("\nTOTAL GANADO: " + (totalGained / 100) + "," + (totalGained % 100) + "ï¿½");
 		
 		System.out.println("\nPulse enter para volver al menu");
 	}
