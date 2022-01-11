@@ -10,6 +10,8 @@
 <item elementID="=Functions2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=StreetRaceControl" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=MaquinaExpendedoraV2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=PrimerProgramaModular" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ArrayListWithFunctions" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1639060009234_7" label="Programación Lineal" name="Programación Lineal">
 <item elementID="=E_1-17_doWhile2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
@@ -54,6 +56,7 @@
 <item elementID="=ChristmasDay" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=SpaceInvader" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=JuegosDeCinta" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Plantilla" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1632495010202_2" label="Window Working Set" name="Aggregate for window 1632495010202"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1634656247569_3" label="Window Working Set" name="Aggregate for window 1634656247569"/>
