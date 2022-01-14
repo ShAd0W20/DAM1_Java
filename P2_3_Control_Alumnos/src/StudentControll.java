@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public class StudentControll {
 
 	static Scanner input = new Scanner(System.in);
+	final static String dniChars = "TRWAGMYFPDXBNJZSQVHLCKE";
 	
 	public static void main(String[] args) {
 		
@@ -26,11 +27,10 @@ public class StudentControll {
 		
 		studentName.add("Pepe"); studentID.add("49184487E"); studentBirthDate.add(LocalDate.now()); studentGrade.add(0);
 		studentName.add("Pepa"); studentID.add("49184486E"); studentBirthDate.add(LocalDate.now()); studentGrade.add(1);
-		studentName.add("Maria"); studentID.add("491848656E"); studentBirthDate.add(LocalDate.now()); studentGrade.add(1);
-		studentName.add("Laura"); studentID.add("591848656E"); studentBirthDate.add(LocalDate.now()); studentGrade.add(2);
+		studentName.add("Maria"); studentID.add("49184865E"); studentBirthDate.add(LocalDate.now()); studentGrade.add(1);
+		studentName.add("Laura"); studentID.add("59184865E"); studentBirthDate.add(LocalDate.now()); studentGrade.add(2);
 		
 		mainMenu(studentName, studentID, studentBirthDate, studentGrade, schoolGrades);
-		
 		input.close();
 	}
 	
@@ -92,13 +92,8 @@ public class StudentControll {
 		System.out.println("Introduce el DNI del alumno");
 		enteredStudentID = input.nextLine();
 		
-		while(!validateStudentID(enteredStudentID)) {
-			System.out.println("DNI incorrecto. Introduzca otro DNI valido.");
-			enteredStudentID = input.nextLine();
-		}
-		
-		while(searchStudentInArray(studentID, Integer.parseInt(enteredStudentID.substring(0, enteredStudentID.length() - 1))) >= 0) {
-			System.out.println("DNI ya registrado. Introduzca otro DNI valido.");
+		while(!validateStudentID(enteredStudentID) || searchStudentInArray(studentID, Integer.parseInt(enteredStudentID.substring(0, 8))) >= 0) {
+			System.out.println("DNI incorrecto o ya registrado. Introduzca otro DNI valido.");
 			enteredStudentID = input.nextLine();
 		}
 		
@@ -136,45 +131,49 @@ public class StudentControll {
 			System.out.println("Introduce el nombre del alumno");
 			searchStudent = input.nextLine();
 			if(searchStudentInArray(studentName, searchStudent) < 0) {
-				System.out.println("El nombre introducido no esta registrado");
-			}
-			System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentName, searchStudent)));
-			
-			System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentName, searchStudent))));
-			
-			System.out.println("Esta seguro que desea eliminar este alumno? \n[+] Si. \n [+] No.");
-			finalDecision = input.nextLine();
-			
-			if(finalDecision.equalsIgnoreCase("si")) {
-				studentName.remove(searchStudentInArray(studentName, searchStudent));
-				studentID.remove(searchStudentInArray(studentName, searchStudent));
-				studentBirthDate.remove(searchStudentInArray(studentName, searchStudent));
-				studentGrade.remove(searchStudentInArray(studentName, searchStudent));
+				System.out.println("El nombre introducido no esta registrado. Pulse enter para volver al menu.");
 			} else {
-				System.out.println("Proceso cancelado. Pulse enter para volver al menu");
+				System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentName, searchStudent)));
+				
+				System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentName, searchStudent))));
+				
+				System.out.println("Esta seguro que desea eliminar este alumno? \n[+] Si. \n[+] No.");
+				finalDecision = input.nextLine();
+				
+				if(finalDecision.equalsIgnoreCase("si")) {
+					studentID.remove(searchStudentInArray(studentName, searchStudent));
+					studentBirthDate.remove(searchStudentInArray(studentName, searchStudent));
+					studentGrade.remove(searchStudentInArray(studentName, searchStudent));
+					studentName.remove(searchStudentInArray(studentName, searchStudent));
+				} else {
+					System.out.println("Proceso cancelado. Pulse enter para volver al menu");
+				}
 			}
 			
 			break;
 		case "2":
 			System.out.println("Introduce el DNI del alumno");
 			searchStudent = input.nextLine();
-			if(searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, searchStudent.length() - 1))) < 0) {
+			if(searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, 8))) < 0) {
 				System.out.println("El DNI introducido no esta registrado");
-			}
-			System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, searchStudent.length() - 1)))));
-			
-			System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, searchStudent.length() - 1))))));
-			
-			System.out.println("Esta seguro que desea eliminar este alumno? \n[+] Si. \n [+] No.");
-			finalDecision = input.nextLine();
-			if(finalDecision.equalsIgnoreCase("si")) {
-				studentName.remove(searchStudentInArray(studentID, searchStudent));
-				studentID.remove(searchStudentInArray(studentID, searchStudent));
-				studentBirthDate.remove(searchStudentInArray(studentID, searchStudent));
-				studentGrade.remove(searchStudentInArray(studentID, searchStudent));
 			} else {
-				System.out.println("Proceso cancelado. Pulse enter para volver al menu");
+				System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, 8)))));
+				
+				System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, 8))))));
+				
+				System.out.println("Esta seguro que desea eliminar este alumno? \n[+] Si. \n[+] No.");
+				finalDecision = input.nextLine();
+				if(finalDecision.equalsIgnoreCase("si")) {
+					studentName.remove(searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, 8))));
+					studentGrade.remove(searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, 8))));
+					studentBirthDate.remove(searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, 8))));
+					studentID.remove(searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, 8))));
+					System.out.println("Alumno eliminado con exito. Pulsa enter para volver al menu.");
+				} else {
+					System.out.println("Proceso cancelado. Pulse enter para volver al menu");
+				}
 			}
+			
 			break;
 		}
 	}
@@ -192,24 +191,28 @@ public class StudentControll {
 			searchStudent = input.nextLine();
 			if(searchStudentInArray(studentName, searchStudent) < 0) {
 				System.out.println("El nombre introducido no esta registrado");
+			} else {
+				System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentName, searchStudent)));
+				
+				System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentName, searchStudent))));
+				
+				System.out.println("Pulse enter para volver al menu");
 			}
-			System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentName, searchStudent)));
 			
-			System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentName, searchStudent))));
-			
-			System.out.println("Pulse enter para volver al menu");
 			break;
 		case "2":
 			System.out.println("Introduce el DNI del alumno");
 			searchStudent = input.nextLine();
 			if(searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, searchStudent.length() - 1))) < 0) {
 				System.out.println("El DNI introducido no esta registrado");
+			} else {
+				System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, searchStudent.length() - 1)))));
+				
+				System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, searchStudent.length() - 1))))));
+				
+				System.out.println("Pulse enter para volver al menu");
 			}
-			System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, searchStudent.length() - 1)))));
 			
-			System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, searchStudent.length() - 1))))));
-			
-			System.out.println("Pulse enter para volver al menu");
 			break;
 		}
 	}
@@ -271,20 +274,34 @@ public class StudentControll {
 	static int searchStudentInArray(ArrayList<String> studentID, int studentIDToSearch) {
 		
 		for(int i = 0; i < studentID.size(); i++) {
-			if(studentID.get(i).substring(0, studentID.get(i).length() - 1).equals(Integer.toString(studentIDToSearch))) {
-				return 1;
+			if(studentID.get(i).substring(0, 8).equals(Integer.toString(studentIDToSearch))) {
+				return i;
 			}
 		}
 		
 		return -1;
 	}
 	
+	
 	static boolean validateStudentID(String studentID) {
 		
-		if(Pattern.matches("[0-9]{8}[a-zA-Z]", studentID)) {
-			return true;
-		}		
-		return false;
+		if(studentID.length() != 9 ) {
+			return false;
+		} else {			
+			String intPartDNI = studentID.trim().replaceAll(" ", "").substring(0, 8);
+			char ltrDNI = studentID.charAt(8);
+			if(intPartDNI.matches("[0-9]{8}") == false) {
+				return false;
+			} else {
+				int valNumDNI = Integer.parseInt(intPartDNI) % 23;
+				
+				if (dniChars.charAt(valNumDNI) != ltrDNI) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+		}
 	}
 	
 	static boolean validateStudentBirthDate(String studentBirthDate) {
@@ -315,9 +332,9 @@ public class StudentControll {
 	}
 
 	static int searchGradeID(ArrayList<Integer> studentGrade, int studentPosInArray) {
-		
 		return studentGrade.get(studentPosInArray);
 	}
+	
 
 	static String studentGradeInfo(String[][] schoolGrades, int gradeID) {
 		String result = "";
