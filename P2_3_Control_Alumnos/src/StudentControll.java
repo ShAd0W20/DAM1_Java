@@ -25,7 +25,7 @@ public class StudentControll {
 		schoolGrades[1][0] = "DAM"; schoolGrades[1][1] = "M4"; schoolGrades[1][2] = "M5"; schoolGrades[1][3] = "M6";
 		schoolGrades[2][0] = "DAW"; schoolGrades[2][1] = "M7"; schoolGrades[2][2] = "M8"; schoolGrades[2][3] = "M9";
 		
-		studentName.add("Pepe"); studentID.add("49184487E"); studentBirthDate.add(LocalDate.now()); studentGrade.add(0);
+		studentName.add("Pepe"); studentID.add("49184488E"); studentBirthDate.add(LocalDate.now()); studentGrade.add(0);
 		studentName.add("Pepa"); studentID.add("49184486E"); studentBirthDate.add(LocalDate.now()); studentGrade.add(1);
 		studentName.add("Maria"); studentID.add("49184865E"); studentBirthDate.add(LocalDate.now()); studentGrade.add(1);
 		studentName.add("Laura"); studentID.add("59184865E"); studentBirthDate.add(LocalDate.now()); studentGrade.add(2);
@@ -73,6 +73,7 @@ public class StudentControll {
 		} while (!mainMenuOption.equalsIgnoreCase("salir"));
 	}
 	
+	/*Method to register new student into the array*/
 	static void registerStudent(ArrayList<String> studentName, ArrayList<String> studentID, ArrayList<LocalDate> studentBirthDate, ArrayList<Integer> studentGrade, String[][] schoolGrades) {
 		String enteredStudentName = "";
 		String enteredStudentID = "";
@@ -82,6 +83,7 @@ public class StudentControll {
 		System.out.println("Introduce el nombre del alumno");
 		enteredStudentName = input.nextLine();
 		
+		/*We call a function that will check if the student name already exists if not it will be saved*/
 		while(searchStudentInArray(studentName, enteredStudentName) >= 0) {
 			System.out.println("Alumno ya registrado. Introduzca otro nombre.");
 			enteredStudentName = input.nextLine();
@@ -92,6 +94,9 @@ public class StudentControll {
 		System.out.println("Introduce el DNI del alumno");
 		enteredStudentID = input.nextLine();
 		
+		/* We call a function that will check if the student id (dni) already exists and if it's a valid DNI
+		 * While it doesn't have the correct format or while it has already being registered keep asking
+		 */
 		while(!validateStudentID(enteredStudentID) || searchStudentInArray(studentID, Integer.parseInt(enteredStudentID.substring(0, 8))) >= 0) {
 			System.out.println("DNI incorrecto o ya registrado. Introduzca otro DNI valido.");
 			enteredStudentID = input.nextLine();
@@ -102,14 +107,17 @@ public class StudentControll {
 		System.out.println("Introduzca la fecha de nacimiento del alumno. Formato: dd/mm/aa");
 		enteredStudentBirthDate = input.nextLine();
 		
+		/* We call a function that will check if the student birth day has a correct format following the above ask format
+		 * While it doesn't have the correct format keep asking for a valid birth day format
+		 */
 		while(!validateStudentBirthDate(enteredStudentBirthDate)) {
 			System.out.println("Fecha incorrecta. Introduzca otra fecha valida.");
 			enteredStudentBirthDate = input.nextLine();
 		}
 		
 		studentBirthDate.add(LocalDate.parse(enteredStudentBirthDate, DateTimeFormatter.ofPattern("d/M/y")));
-		
-		System.out.println(schoolGradesPrint(schoolGrades));
+
+		printSchoolGradesInfo(schoolGrades);
 		System.out.println("Introduzca el numero del ciclo al que pertenece el alumno");
 		enteredStudentGrade = input.nextInt() - 1;
 		input.nextLine();
@@ -118,6 +126,7 @@ public class StudentControll {
 		System.out.println("Alumno registrado. Pulse enter para volver al menu.");
 	}
 	
+	/*Method that will allow us to delete 1 student from the array*/
 	static void deleteStudent(ArrayList<String> studentName, ArrayList<String> studentID, ArrayList<LocalDate> studentBirthDate, ArrayList<Integer> studentGrade, String[][] schoolGrades) {
 		String searchMenuOption = "";
 		String searchStudent = "";
@@ -130,13 +139,16 @@ public class StudentControll {
 		case "1":
 			System.out.println("Introduce el nombre del alumno");
 			searchStudent = input.nextLine();
+			/*Check if the student exists in the names array in order to continue the program*/
 			if(searchStudentInArray(studentName, searchStudent) < 0) {
 				System.out.println("El nombre introducido no esta registrado. Pulse enter para volver al menu.");
 			} else {
+				/*Print the student info follower by the grade that student is in*/
 				System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentName, searchStudent)));
 				
 				System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentName, searchStudent))));
 				
+				/*Ask is we are sure that we what to delete the student*/
 				System.out.println("Esta seguro que desea eliminar este alumno? \n[+] Si. \n[+] No.");
 				finalDecision = input.nextLine();
 				
@@ -145,6 +157,7 @@ public class StudentControll {
 					studentBirthDate.remove(searchStudentInArray(studentName, searchStudent));
 					studentGrade.remove(searchStudentInArray(studentName, searchStudent));
 					studentName.remove(searchStudentInArray(studentName, searchStudent));
+					System.out.println("Alumno eliminado con exito. Pulsa enter para volver al menu.");
 				} else {
 					System.out.println("Proceso cancelado. Pulse enter para volver al menu");
 				}
@@ -154,13 +167,16 @@ public class StudentControll {
 		case "2":
 			System.out.println("Introduce el DNI del alumno");
 			searchStudent = input.nextLine();
+			/*Check if the student ID (dni) exists in the studentID array in order to continue*/
 			if(searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, 8))) < 0) {
 				System.out.println("El DNI introducido no esta registrado");
 			} else {
+				/*Print the student info follower by the grade that student is in*/
 				System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, 8)))));
 				
 				System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, 8))))));
 				
+				/*Ask is we are sure that we what to delete the student*/
 				System.out.println("Esta seguro que desea eliminar este alumno? \n[+] Si. \n[+] No.");
 				finalDecision = input.nextLine();
 				if(finalDecision.equalsIgnoreCase("si")) {
@@ -177,11 +193,13 @@ public class StudentControll {
 			break;
 		}
 	}
-	
+
+	/*Method to search student by name or ID (dni) in the arrays*/
 	static void searchStudent(ArrayList<String> studentName, ArrayList<String> studentID, ArrayList<LocalDate> studentBirthDate, ArrayList<Integer> studentGrade, String[][] schoolGrades) {
 		String searchMenuOption = "";
 		String searchStudent = "";
 		
+		/*Ask for the search method*/
 		System.out.println("Como desea buscar el alumno. \n[1] Por nombre. \n[2] Por DNI.");
 		searchMenuOption = input.nextLine();
 		
@@ -189,9 +207,11 @@ public class StudentControll {
 		case "1":
 			System.out.println("Introduce el nombre del alumno");
 			searchStudent = input.nextLine();
+			/* Check if the student name is registered in the array */
 			if(searchStudentInArray(studentName, searchStudent) < 0) {
 				System.out.println("El nombre introducido no esta registrado");
 			} else {
+				/* Prints the student info along with the grade of the student */
 				System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentName, searchStudent)));
 				
 				System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentName, searchStudent))));
@@ -203,9 +223,11 @@ public class StudentControll {
 		case "2":
 			System.out.println("Introduce el DNI del alumno");
 			searchStudent = input.nextLine();
+			/* Check if the student ID is registered in the array */
 			if(searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, searchStudent.length() - 1))) < 0) {
 				System.out.println("El DNI introducido no esta registrado");
 			} else {
+				/* Prints the student info along with the grade of the student */
 				System.out.println(studentInfo(studentName, studentID, studentBirthDate, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, searchStudent.length() - 1)))));
 				
 				System.out.println(studentGradeInfo(schoolGrades, searchGradeID(studentGrade, searchStudentInArray(studentID, Integer.parseInt(searchStudent.substring(0, searchStudent.length() - 1))))));
@@ -217,6 +239,7 @@ public class StudentControll {
 		}
 	}
 	
+	/* Method that will return all school grades whit their subjects */
 	static void printSchoolGradesModulesInfo(String[][] schoolGrades) {
 		for (int i = 0; i < schoolGrades.length; i++) {
 			for (int j = 0; j < schoolGrades[i].length; j++) {
@@ -227,16 +250,17 @@ public class StudentControll {
 		System.out.println("Pulse enter para volver al menu.");
 	}
 	
+	/* Method that will return just the school grade names with help of the function */
 	static void printSchoolGradesInfo(String[][] schoolGrades) {
-		for (int i = 0; i < schoolGrades.length; i++) {
-				System.out.println("["+ (i + 1) + "] " + schoolGrades[i][0]);
-		}
+		System.out.println(schoolGradesPrint(schoolGrades));
 	}
 	
+	/* Redundant method to print the student grade info */
 	static void printStudentGradeInfo(ArrayList<String> studentName, ArrayList<String> studentID, ArrayList<LocalDate> studentBirthDate, ArrayList<Integer> studentGrade, String[][] schoolGrades) {
 		searchStudent(studentName, studentID, studentBirthDate, studentGrade, schoolGrades);
 	}
 	
+	/* Method used to print all students in the same grade */
 	static void printStudentInSameGrade(ArrayList<String> studentName, ArrayList<String> studentID, ArrayList<LocalDate> studentBirthDate, ArrayList<Integer> studentGrade, String[][] schoolGrades) {
 		String gradeToShow = "";
 		printSchoolGradesInfo(schoolGrades);
@@ -251,6 +275,7 @@ public class StudentControll {
 		System.out.println("Pulse enter para volver al menu.");
 	}
 	
+	/* Method that will print all students ordered by their grade */
 	static void printStudentByGrade(ArrayList<String> studentName, ArrayList<String> studentID, ArrayList<LocalDate> studentBirthDate, ArrayList<Integer> studentGrade, String[][] schoolGrades) {
 				
 		for(int j = 0; j < schoolGrades.length; j++) {
@@ -264,6 +289,7 @@ public class StudentControll {
 		System.out.println("Pulse enter para volver al menu.");
 	}
 	
+	/* Function that will return the student position in the ArrayList by searching it with the 'studentNameToSearch' parameter */
 	static int searchStudentInArray(ArrayList<String> studentName, String studentNameToSearch) {
 		if (studentName.indexOf(studentNameToSearch) == -1) {
 			return -1;
@@ -271,6 +297,7 @@ public class StudentControll {
 		return studentName.indexOf(studentNameToSearch);
 	}
 	
+	/* Function that will return the student position in the ArrayList by searching it with the 'studentIDToSearch' parameter that will have to be an integer */
 	static int searchStudentInArray(ArrayList<String> studentID, int studentIDToSearch) {
 		
 		for(int i = 0; i < studentID.size(); i++) {
@@ -282,7 +309,7 @@ public class StudentControll {
 		return -1;
 	}
 	
-	
+	/* Boolean function to check if it's a valid student ID (dni) or not */
 	static boolean validateStudentID(String studentID) {
 		
 		if(studentID.length() != 9 ) {
@@ -304,6 +331,7 @@ public class StudentControll {
 		}
 	}
 	
+	/* Boolean function to check if the entered student birth date is in a valid format following the 'day/month/year' format */
 	static boolean validateStudentBirthDate(String studentBirthDate) {
 		
 		try {
@@ -314,6 +342,7 @@ public class StudentControll {
 		return true;
 	}
 	
+	/* Function that will return an String whit the school grade names */
 	static String schoolGradesPrint(String[][] schoolGrades) {
 		String grades = "";
 		for (int i = 0; i < schoolGrades.length; i++) {
@@ -322,6 +351,7 @@ public class StudentControll {
 		return grades;
 	}
 	
+	/* Function that will return the student info based on the student position in the array determined by the parameter 'studentPosInArray' */
 	static String studentInfo(ArrayList<String> studentName, ArrayList<String> studentID, ArrayList<LocalDate> studentBirthDate, int studentPosInArray) {
 		String data = "";
 		data += studentName.get(studentPosInArray) + " - ";
@@ -331,11 +361,12 @@ public class StudentControll {
 		return data;
 	}
 
+	/* Integer function that will return the student grade info from the array */
 	static int searchGradeID(ArrayList<Integer> studentGrade, int studentPosInArray) {
 		return studentGrade.get(studentPosInArray);
 	}
-	
 
+	/* Function that will return the student grade and their subjects */
 	static String studentGradeInfo(String[][] schoolGrades, int gradeID) {
 		String result = "";
 		for(int j = 0; j < schoolGrades[gradeID].length; j++) {
