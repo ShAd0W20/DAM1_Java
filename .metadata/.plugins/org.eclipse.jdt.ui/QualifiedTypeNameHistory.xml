@@ -24,4 +24,5 @@
     <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
     <fullyQualifiedTypeName name="java.util.Collection"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="biblioteca.matematiques.operacions.Enters"/>
 </qualifiedTypeNameHistroy>
