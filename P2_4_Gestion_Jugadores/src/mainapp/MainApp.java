@@ -3,6 +3,8 @@ package mainapp;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 import models.*;
@@ -29,13 +31,14 @@ public class MainApp {
 		addPlayerToArray("Mireia", LocalDate.now(), "Lateral", "Wea team", "Hockey", 1, players);
 		addPlayerToArray("Gabi", LocalDate.now(), "Lateral", "Wee team", "Hockey", 2, players);
 
-		//mainMenu(players);
-		printPlayersInSameSportOrderByPoints("Futbol", players);
+		// mainMenu(players);
+		printPlayerSportMaxPoints("Futbol", players);
 	}
 
 	static void mainMenu(ArrayList<RegisterPlayer> players) {
 		String mainMenuOption = "";
-		System.out.println("Que desea hacer? \n[1] Registrar jugador. \n[2] Actualizar jugador. \n[3] Borrar jugador. \n[4] Listar jugadores de un equipo. \n[5] Listar jugadores de un deporte ordenados por equipo \n[6] Listar jugadores de un deporte ordenador por puntos. \n[7] Listar jugador con mas puntos de un deporte. \n[Salir] para salir del programa");
+		System.out.println(
+				"Que desea hacer? \n[1] Registrar jugador. \n[2] Actualizar jugador. \n[3] Borrar jugador. \n[4] Listar jugadores de un equipo. \n[5] Listar jugadores de un deporte ordenados por equipo \n[6] Listar jugadores de un deporte ordenador por puntos. \n[7] Listar jugador con mas puntos de un deporte. \n[Salir] para salir del programa");
 		do {
 			mainMenuOption = input.nextLine();
 			switch (mainMenuOption) {
@@ -73,9 +76,17 @@ public class MainApp {
 				sportToDisplay2 = input.nextLine();
 				printPlayersInSameSportOrderByPoints(sportToDisplay2, players);
 				break;
+			case "7":
+				String sportToDisplay3 = "";
+				print("Que deporte desea listar? Introduce el nombre del deporte.");
+				printAvailableSports(players);
+				sportToDisplay3 = input.nextLine();
+
+				break;
 			default:
 				if (!mainMenuOption.equalsIgnoreCase("salir")) {
-					System.out.println("Que desea hacer? \n[1] Registrar jugador. \n[2] Actualizar jugador. \n[3] Borrar jugador. \n[4] Listar jugadores de un equipo. \n[5] Listar jugadores de un deporte ordenados por equipo \n[6] Listar jugadores de un deporte ordenador por puntos. \n[7] Listar jugador con mas puntos de un deporte. \n[Salir] para salir del programa");
+					System.out.println(
+							"Que desea hacer? \n[1] Registrar jugador. \n[2] Actualizar jugador. \n[3] Borrar jugador. \n[4] Listar jugadores de un equipo. \n[5] Listar jugadores de un deporte ordenados por equipo \n[6] Listar jugadores de un deporte ordenador por puntos. \n[7] Listar jugador con mas puntos de un deporte. \n[Salir] para salir del programa");
 				}
 			}
 
@@ -114,7 +125,8 @@ public class MainApp {
 
 	}
 
-	static void addPlayerToArray(String playerName, LocalDate playerBirthDay, String playerPosition, String playerTeam, String playerSport, int playerPoints, ArrayList<RegisterPlayer> players) {
+	static void addPlayerToArray(String playerName, LocalDate playerBirthDay, String playerPosition, String playerTeam,
+			String playerSport, int playerPoints, ArrayList<RegisterPlayer> players) {
 		RegisterPlayer player = new RegisterPlayer();
 		player.playerName = playerName;
 		player.playerBirthDay = playerBirthDay;
@@ -133,16 +145,19 @@ public class MainApp {
 		System.out.println("Introduce el nombre del jugador a modificar");
 		playerName = input.nextLine();
 
-		System.out.println("Que campo desea modificar? \n[1] Nombre. \n[2] Fecha de nacimiento. \n[3] Posicion. \n[4] Equipo. \n[5] Deporte. \n[6] Puntos");
+		System.out.println(
+				"Que campo desea modificar? \n[1] Nombre. \n[2] Fecha de nacimiento. \n[3] Posicion. \n[4] Equipo. \n[5] Deporte. \n[6] Puntos");
 		dataToUpdate = input.nextLine();
 
-		System.out.println("Introduce el valor del campo a modificar. \nEn el caso modificar la fecha de nacimiento siga el formato (dd/mm/yyyy)");
+		System.out.println(
+				"Introduce el valor del campo a modificar. \nEn el caso modificar la fecha de nacimiento siga el formato (dd/mm/yyyy)");
 		dataValueToUpdate = input.nextLine();
 
 		updatePlayerInfo(playerName, dataToUpdate, dataValueToUpdate, players);
 	}
 
-	static void updatePlayerInfo(String playerNameToSearch, String dataToUpdate, String dataValueToUpdate, ArrayList<RegisterPlayer> players) {
+	static void updatePlayerInfo(String playerNameToSearch, String dataToUpdate, String dataValueToUpdate,
+			ArrayList<RegisterPlayer> players) {
 		int arrayPost = searchPlayerByName(playerNameToSearch, players);
 
 		switch (dataToUpdate) {
@@ -150,7 +165,8 @@ public class MainApp {
 			players.get(arrayPost).playerName = dataValueToUpdate;
 			break;
 		case "2":
-			players.get(arrayPost).playerBirthDay = LocalDate.parse(dataValueToUpdate, DateTimeFormatter.ofPattern("d/M/y"));
+			players.get(arrayPost).playerBirthDay = LocalDate.parse(dataValueToUpdate,
+					DateTimeFormatter.ofPattern("d/M/y"));
 			break;
 		case "3":
 			players.get(arrayPost).playerPosition = dataValueToUpdate;
@@ -224,7 +240,7 @@ public class MainApp {
 		ArrayList<String> teams = new ArrayList<String>();
 
 		for (int i = 0; i < players.size(); i++) {
-			if(players.get(i).playerSport.equals(sport)) {
+			if (players.get(i).playerSport.equals(sport)) {
 				if (!teams.contains(players.get(i).playerTeam)) {
 					teams.add(players.get(i).playerTeam);
 				}
@@ -245,32 +261,53 @@ public class MainApp {
 		print("Pulse enter para volver al menu.");
 
 	}
-	
+
 	static void printPlayersInSameSportOrderByPoints(String sport, ArrayList<RegisterPlayer> players) {
 		ArrayList<RegisterPlayer> playersInSport = new ArrayList<RegisterPlayer>();
-		ArrayList<String> playerName = new ArrayList<String>();
-		ArrayList<Integer> playerPoints = new ArrayList<Integer>();
-		
-		for(int i = 0; i < players.size(); i++) {
-			if(players.get(i).playerSport.equals(sport)) {
+
+		for (int i = 0; i < players.size(); i++) {
+			if (players.get(i).playerSport.equals(sport)) {
 				playersInSport.add(players.get(i));
-				playerName.add(players.get(i).playerName);
-				playerPoints.add(players.get(i).playerPoints);
 			}
 		}
-		
-		
+
 		print("[+] " + sport);
 
-		for(int i = 0; i < playersInSport.size(); i++) {
+		for (int i = 0; i < playersInSport.size(); i++) {
 			print(playersInSport.get(i).playerName + " -> " + playersInSport.get(i).playerPoints);
 		}
-		
+
 		print("\nPulse enter para volver al menu.");
 
 	}
 
+	static void printPlayerSportMaxPoints(String sport, ArrayList<RegisterPlayer> players) {
+		ArrayList<RegisterPlayer> playersInSport = new ArrayList<RegisterPlayer>();
+		ArrayList<Integer> points = new ArrayList<Integer>();
+		
+		for(int i = 0; i < players.size(); i++) {
+			if(players.get(i).playerSport.equals(sport)) {
+				playersInSport.add(players.get(i));
+			}
+		}
+		
+		playersInSport.forEach((n) -> {
+			points.add(n.playerPoints);
+		});
+		Collections.sort(points, Collections.reverseOrder());
+		
+		print("[+] " + sport);		
+		
+		print(points.get(0));
+		
+		print("\nPulse enter para volver al menu.");
+	}
+
 	static void print(String data) {
+		System.out.println(data);
+	}
+	
+	static void print(int data) {
 		System.out.println(data);
 	}
 }
