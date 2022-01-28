@@ -125,8 +125,7 @@ public class MainApp {
 
 	}
 
-	static void addPlayerToArray(String playerName, LocalDate playerBirthDay, String playerPosition, String playerTeam,
-			String playerSport, int playerPoints, ArrayList<RegisterPlayer> players) {
+	static void addPlayerToArray(String playerName, LocalDate playerBirthDay, String playerPosition, String playerTeam, String playerSport, int playerPoints, ArrayList<RegisterPlayer> players) {
 		RegisterPlayer player = new RegisterPlayer();
 		player.playerName = playerName;
 		player.playerBirthDay = playerBirthDay;
