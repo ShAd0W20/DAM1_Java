@@ -11,6 +11,14 @@ public class Recursividad {
 		System.out.println(reverseWord("Hola"));
 		System.out.println(reverseWord2("Hola"));
 
+		for (int i = 0; i < 10; i++) {
+			System.out.print(fib(i) + " ");
+		}
+		
+		System.out.println();
+
+		System.out.println(searchCharInWord('x', "sdyijkhjdahsadsdjsakdiopgjbkghussaiodassssajdaskdashjdhasjhddhssachs"));
+
 	}
 
 	static int suma(int a, int b) {
@@ -69,12 +77,33 @@ public class Recursividad {
 	static String reverseWord2(String word) {
 		char ch;
 		String nstr = "";
-		
+
 		for (int i = 0; i < word.length(); i++) {
 			ch = word.charAt(i);
 			nstr = ch + nstr;
 		}
 		return nstr;
 	}
+
+	static long fib(long n) {
+		if ((n == 0) || (n == 1))
+			return n;
+		else
+			return fib(n - 1) + fib(n - 2);
+	}
+
+	static boolean searchCharInWord(char character, String word) {
+
+		String word1 = word.substring(0, word.length() / 2);
+		String word2 = word.substring(word.length() / 2, word.length());
+
+		if (word.length() == 1) {
+			return word.charAt(0) == character;
+		}
+
+		return searchCharInWord(character, word1) || searchCharInWord(character, word2);
+	}
+	
+	
 
 }
