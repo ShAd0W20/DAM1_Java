@@ -2,26 +2,193 @@ package biblioteca.meteorologia;
 
 import java.util.ArrayList;
 
+import biblioteca.estadistica.TaulaEnters;
 import programa.DiaMeteo;
 
+
+/**
+ * The Class Temperatura.
+ */
 public class Temperatura {
 
-	static int mitjanaMensual(String mes, DiaMeteo[] dias) {
+	/**
+	 * Dies mes amplitud mensual.
+	 *
+	 * @param mes  the mes
+	 * @param dias the dias
+	 * @return the array list
+	 */
+	public static ArrayList<DiaMeteo> diesMesAmplitudMensual(String mes, DiaMeteo[] dias) {
+		int monthNumber = TaulaEnters.monthNumber(mes);
+		int differenceBetweenTemp = 0;
+		int maxDifference = 0;
 
-		return 0;
+		ArrayList<DiaMeteo> maxTemperatureAmpliude = new ArrayList<DiaMeteo>();
+
+		for (int i = 0; i < dias.length; i++) {
+			if (dias[i].dia.getMonthValue() == monthNumber) {
+				differenceBetweenTemp = dias[i].tempMax - dias[i].tempMin;
+
+				if (differenceBetweenTemp > maxDifference) {
+					maxDifference = differenceBetweenTemp;
+				}
+			}
+
+		}
+
+		for (int i = 0; i < dias.length; i++) {
+			if (dias[i].dia.getMonthValue() == monthNumber) {
+				if ((dias[i].tempMax - dias[i].tempMin) == maxDifference) {
+					maxTemperatureAmpliude.add(dias[i]);
+				}
+			}
+		}
+
+		return maxTemperatureAmpliude;
 	}
 
-	static ArrayList<DiaMeteo> diesMesPlujaMensual(String mes, DiaMeteo[] dias) {
+	/**
+	 * Dies mes amplitud anual.
+	 *
+	 * @param dias the dias
+	 * @return the array list
+	 */
+	public static ArrayList<DiaMeteo> diesMesAmplitudAnual(DiaMeteo[] dias) {
+		int differenceBetweenTemp = 0;
+		int maxDifference = 0;
 
-		return null;
+		ArrayList<DiaMeteo> maxTemperatureAmpliude = new ArrayList<DiaMeteo>();
+
+		for (int i = 0; i < dias.length; i++) {
+			differenceBetweenTemp = dias[i].tempMax - dias[i].tempMin;
+
+			if (differenceBetweenTemp > maxDifference) {
+				maxDifference = differenceBetweenTemp;
+			}
+
+		}
+
+		for (int i = 0; i < dias.length; i++) {
+			if ((dias[i].tempMax - dias[i].tempMin) == maxDifference) {
+				maxTemperatureAmpliude.add(dias[i]);
+			}
+		}
+
+		return maxTemperatureAmpliude;
 	}
 
-	static int mitjanaAnual(DiaMeteo[] dias) {
-		return 0;
+	/**
+	 * Dies mes calor mensual.
+	 *
+	 * @param mes  the mes
+	 * @param dias the dias
+	 * @return the array list
+	 */
+	public static ArrayList<DiaMeteo> diesMesCalorMensual(String mes, DiaMeteo[] dias) {
+		int monthNumber = TaulaEnters.monthNumber(mes);
+		ArrayList<DiaMeteo> objectInMonth = new ArrayList<DiaMeteo>();
+		ArrayList<DiaMeteo> maxHeatDaysInMonth = new ArrayList<DiaMeteo>();
+
+		for (int i = 0; i < dias.length; i++) {
+			if (dias[i].dia.getMonthValue() == monthNumber) {
+				objectInMonth.add(dias[i]);
+			}
+		}
+		int[] heatDaysByMonth = new int[objectInMonth.size()];
+
+		for (int i = 0; i < objectInMonth.size(); i++) {
+			heatDaysByMonth[i] = objectInMonth.get(i).tempMax;
+		}
+
+		for (int i = 0; i < dias.length; i++) {
+			if (dias[i].dia.getMonthValue() == monthNumber) {
+				if (dias[i].tempMax == TaulaEnters.maxTaula(heatDaysByMonth)) {
+					maxHeatDaysInMonth.add(dias[i]);
+				}
+			}
+		}
+
+		return maxHeatDaysInMonth;
 	}
 
-	static ArrayList<DiaMeteo> diasMesPlujaAnual(DiaMeteo[] dias) {
-		return null;
+	/**
+	 * Dies mes calor anual.
+	 *
+	 * @param dias the dias
+	 * @return the array list
+	 */
+	public static ArrayList<DiaMeteo> diesMesCalorAnual(DiaMeteo[] dias) {
+		int[] heatDaysYear = new int[dias.length];
+		ArrayList<DiaMeteo> maxHeatDaysInYear = new ArrayList<DiaMeteo>();
+
+		for (int i = 0; i < dias.length; i++) {
+			heatDaysYear[i] = dias[i].tempMax;
+		}
+
+		for (int i = 0; i < dias.length; i++) {
+			if (dias[i].tempMax == TaulaEnters.maxTaula(heatDaysYear)) {
+				maxHeatDaysInYear.add(dias[i]);
+			}
+		}
+
+		return maxHeatDaysInYear;
+	}
+
+	/**
+	 * Dies mes fred mensual.
+	 *
+	 * @param mes  the mes
+	 * @param dias the dias
+	 * @return the array list
+	 */
+	public static ArrayList<DiaMeteo> diesMesFredMensual(String mes, DiaMeteo[] dias) {
+		int monthNumber = TaulaEnters.monthNumber(mes);
+		ArrayList<DiaMeteo> objectInMonth = new ArrayList<DiaMeteo>();
+		ArrayList<DiaMeteo> maxColdDaysInMonth = new ArrayList<DiaMeteo>();
+
+		for (int i = 0; i < dias.length; i++) {
+			if (dias[i].dia.getMonthValue() == monthNumber) {
+				objectInMonth.add(dias[i]);
+			}
+		}
+		int[] coldDaysByMonth = new int[objectInMonth.size()];
+
+		for (int i = 0; i < objectInMonth.size(); i++) {
+			coldDaysByMonth[i] = objectInMonth.get(i).tempMin;
+		}
+
+		for (int i = 0; i < dias.length; i++) {
+			if (dias[i].dia.getMonthValue() == monthNumber) {
+				if (dias[i].tempMin == TaulaEnters.minTaula(coldDaysByMonth)) {
+					maxColdDaysInMonth.add(dias[i]);
+				}
+			}
+		}
+
+		return maxColdDaysInMonth;
+	}
+	
+	/**
+	 * Dies mes fred anual.
+	 *
+	 * @param dias the dias
+	 * @return the array list
+	 */
+	public static ArrayList<DiaMeteo> diesMesFredAnual(DiaMeteo[] dias) {
+		int[] coldDaysYear = new int[dias.length];
+		ArrayList<DiaMeteo> maxColdDaysInYear = new ArrayList<DiaMeteo>();
+
+		for (int i = 0; i < dias.length; i++) {
+			coldDaysYear[i] = dias[i].tempMax;
+		}
+
+		for (int i = 0; i < dias.length; i++) {
+			if (dias[i].tempMax == TaulaEnters.maxTaula(coldDaysYear)) {
+				maxColdDaysInYear.add(dias[i]);
+			}
+		}
+
+		return maxColdDaysInYear;
 	}
 
 }
