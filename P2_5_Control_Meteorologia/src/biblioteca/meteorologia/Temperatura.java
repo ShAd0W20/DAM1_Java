@@ -14,9 +14,9 @@ public class Temperatura {
 	/**
 	 * Dies mes amplitud mensual.
 	 *
-	 * @param mes  the mes
-	 * @param dias the dias
-	 * @return the array list
+	 * @param mes the string of the month to search
+	 * @param dias the DiaMeteo object array
+	 * @return the array list of days with most amplitude temperature in month searched
 	 */
 	public static ArrayList<DiaMeteo> diesMesAmplitudMensual(String mes, DiaMeteo[] dias) {
 		int monthNumber = TaulaEnters.monthNumber(mes);
@@ -50,8 +50,8 @@ public class Temperatura {
 	/**
 	 * Dies mes amplitud anual.
 	 *
-	 * @param dias the dias
-	 * @return the array list
+	 * @param dias the DiaMeteo object array
+	 * @return the array list of days with most amplitude temperature in year
 	 */
 	public static ArrayList<DiaMeteo> diesMesAmplitudAnual(DiaMeteo[] dias) {
 		int differenceBetweenTemp = 0;
@@ -80,9 +80,9 @@ public class Temperatura {
 	/**
 	 * Dies mes calor mensual.
 	 *
-	 * @param mes  the mes
-	 * @param dias the dias
-	 * @return the array list
+	 * @param mes the string of the month to search
+	 * @param dias the DiaMeteo object array
+	 * @return the array list of days that have been colder throughout the month
 	 */
 	public static ArrayList<DiaMeteo> diesMesCalorMensual(String mes, DiaMeteo[] dias) {
 		int monthNumber = TaulaEnters.monthNumber(mes);
@@ -114,8 +114,8 @@ public class Temperatura {
 	/**
 	 * Dies mes calor anual.
 	 *
-	 * @param dias the dias
-	 * @return the array list
+	 * @param dias the DiaMeteo object array
+	 * @return the array list of days that have been hotter throughout the year
 	 */
 	public static ArrayList<DiaMeteo> diesMesCalorAnual(DiaMeteo[] dias) {
 		int[] heatDaysYear = new int[dias.length];
@@ -137,9 +137,9 @@ public class Temperatura {
 	/**
 	 * Dies mes fred mensual.
 	 *
-	 * @param mes  the mes
-	 * @param dias the dias
-	 * @return the array list
+	 * @param mes the string of the month to search
+	 * @param dias the DiaMeteo object array
+	 * @return the array list of days that have been colder throughout the month
 	 */
 	public static ArrayList<DiaMeteo> diesMesFredMensual(String mes, DiaMeteo[] dias) {
 		int monthNumber = TaulaEnters.monthNumber(mes);
@@ -171,8 +171,8 @@ public class Temperatura {
 	/**
 	 * Dies mes fred anual.
 	 *
-	 * @param dias the dias
-	 * @return the array list
+	 * @param dias the DiaMeteo object array
+	 * @return the array list of days that have been colder throughout the year
 	 */
 	public static ArrayList<DiaMeteo> diesMesFredAnual(DiaMeteo[] dias) {
 		int[] coldDaysYear = new int[dias.length];

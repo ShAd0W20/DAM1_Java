@@ -12,9 +12,9 @@ public class Vent {
 	/**
 	 * Dies poc vent mensual.
 	 *
-	 * @param mes the mes
-	 * @param dias the dias
-	 * @return the array list
+	 * @param mes the string of the month to search
+	 * @param dias the DiaMeteo object array
+	 * @return the array list containing the days that has made less wind
 	 */
 	public static ArrayList<DiaMeteo> diesPocVentMensual(String mes, DiaMeteo[] dias) {
 		int monthNumber = TaulaEnters.monthNumber(mes);
@@ -34,8 +34,8 @@ public class Vent {
 	/**
 	 * Dies poc vent anual.
 	 *
-	 * @param dias the dias
-	 * @return the array list
+	 * @param dias the DiaMeteo object array
+	 * @return the array list containing the days which has been less windy throughout the year
 	 */
 	public static ArrayList<DiaMeteo> diesPocVentAnual(DiaMeteo[] dias) {
 		ArrayList<DiaMeteo> daysLessWind = new ArrayList<DiaMeteo>();
@@ -52,9 +52,9 @@ public class Vent {
 	/**
 	 * Nombre dies poc vent mensual.
 	 *
-	 * @param mes the mes
-	 * @param dias the dias
-	 * @return the int
+	 * @param mes the string of the month to search
+	 * @param dias the DiaMeteo object array
+	 * @return the number of days that it has been little windy in the month
 	 */
 	public static int nombreDiesPocVentMensual (String mes, DiaMeteo[] dias) {
 		int monthNumber = TaulaEnters.monthNumber(mes);
@@ -72,8 +72,8 @@ public class Vent {
 	/**
 	 * Nombre dies poc vent anual.
 	 *
-	 * @param dias the dias
-	 * @return the int
+	 * @param dias the DiaMeteo object array
+	 * @return the number of days that it has been little windy 
 	 */
 	public static int nombreDiesPocVentAnual (DiaMeteo[] dias) {
 		int totalDays = 0;

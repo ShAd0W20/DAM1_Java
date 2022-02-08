@@ -13,9 +13,9 @@ public class Pluja {
 	/**
 	 * Mitjana mensual pluja.
 	 *
-	 * @param mes the mes
-	 * @param dias the dias
-	 * @return the int
+	 * @param mes the string of the month to search
+	 * @param dias the DiaMeteo object array
+	 * @return the number with the value of the median monthly rain
 	 */
 	public static int mitjanaMensualPluja(String mes, DiaMeteo[] dias) {
 		int monthNumber = TaulaEnters.monthNumber(mes);
@@ -38,9 +38,9 @@ public class Pluja {
 	/**
 	 * Dies mes pluja mensual.
 	 *
-	 * @param mes the mes
-	 * @param dias the dias
-	 * @return the array list
+	 * @param mes the string of the month to search
+	 * @param dias the DiaMeteo object array
+	 * @return the array list of days that have rained the most of the month
 	 */
 	public static ArrayList<DiaMeteo> diesMesPlujaMensual(String mes, DiaMeteo[] dias) {
 		int monthNumber = TaulaEnters.monthNumber(mes);
@@ -72,8 +72,8 @@ public class Pluja {
 	/**
 	 * Mitjana anual pluja.
 	 *
-	 * @param dias the dias
-	 * @return the int
+	 * @param dias the DiaMeteo object array
+	 * @return the the integer containing the average annual rainfall
 	 */
 	public static int mitjanaAnualPluja(DiaMeteo[] dias) {
 		int[] rainDays = new int[dias.length];
@@ -86,8 +86,8 @@ public class Pluja {
 	/**
 	 * Dias mes pluja anual.
 	 *
-	 * @param dias the dias
-	 * @return the array list
+	 * @param dias the DiaMeteo object array
+	 * @return the array list of the days that it has rained more throughout the year
 	 */
 	public static ArrayList<DiaMeteo> diasMesPlujaAnual(DiaMeteo[] dias) {
 		int[] rainDays = new int[dias.length];
