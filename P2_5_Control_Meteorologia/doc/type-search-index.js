@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"programa","l":"DiaMeteo"},{"p":"programa","l":"MainApp"},{"p":"biblioteca.meteorologia","l":"Pluja"},{"p":"biblioteca.estadistica","l":"TaulaEnters"},{"p":"biblioteca.meteorologia","l":"Temperatura"},{"p":"biblioteca.meteorologia","l":"Vent"}];updateSearchResults();
