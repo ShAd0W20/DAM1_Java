@@ -27,10 +27,14 @@ public class MainApp {
 		fileInput.close();
 		getDataFromFile(fileToSave, userName, usersBib, userSex, userBirhtDate, userCategory, totalUsers);
 		displayUsers(userName, usersBib, userSex, userBirhtDate, userCategory, totalUsers);
-		registerUser(userName, usersBib, userSex, userBirhtDate, userCategory, totalUsers);
-		totalUsers++;
-		displayUsers(userName, usersBib, userSex, userBirhtDate, userCategory, totalUsers);
+		
+		while(totalUsers < 10) {
+			totalUsers = registerUser(userName, usersBib, userSex, userBirhtDate, userCategory, totalUsers);
+			displayUsers(userName, usersBib, userSex, userBirhtDate, userCategory, totalUsers);
+		}
+		
 		saveDataToFile(userName, usersBib, userSex, userBirhtDate, userCategory, totalUsers, fileToSave);
+		System.out.printf("%n%n[!] Saliendo.... %n");
 	}
 	
 	static void getDataFromFile(File fileToSave, String[] userName, int[] userBib, char[] userSex, LocalDate[] userBirhtDate, String[] userCategory, int totalUsers) throws FileNotFoundException {
@@ -50,26 +54,33 @@ public class MainApp {
 	
 	static void displayUsers(String[] userName, int[] userBib, char[] userSex, LocalDate[] userBirhtDate, String[] userCategory, int totalUsers) {
 		for (int i = 0; i < totalUsers; i++) {
-			System.out.println("[+] " + userName[i] + " " + " " + userSex[i] + " " + userBirhtDate[i].format(DateTimeFormatter.ofPattern("d/M/Y")) + " " + userCategory[i]);
+			System.out.printf("[+] %s %s %s %s %n", userName[i], userSex[i], userBirhtDate[i].format(DateTimeFormatter.ofPattern("d/M/Y")), userCategory[i]);
 		}
 	}
 	
-	static void registerUser(String[] userName, int[] usersBib, char[] userSex, LocalDate[] userBirhtDate, String[] userCategory, int totalUsers) {
+	static int registerUser(String[] userName, int[] usersBib, char[] userSex, LocalDate[] userBirhtDate, String[] userCategory, int totalUsers) {
 		Scanner userInput = new Scanner(System.in);
-		System.out.println("Introduc el nombre del corredor");
+		char entredUserSex = '-';
+		
+		System.out.println("Introduce el nombre del corredor");
 		userName[totalUsers] = userInput.nextLine();
 		
 		usersBib[totalUsers] = getUserBib(usersBib, totalUsers);
 		
-		System.out.println("Introduc el sexo del corredor");
-		userSex[totalUsers] = userInput.nextLine().charAt(0);
+		do {
+			System.out.println("Introduce el sexo del corredor ('M' o 'H')");
+			entredUserSex = userInput.nextLine().charAt(0);
+		} while((entredUserSex != 'M') && (entredUserSex != 'H'));
 		
-		System.out.println("Introduc la fecha de nacimiento del corredor -> dd/mm/aa");
+		userSex[totalUsers] = entredUserSex;
+		
+		System.out.println("Introduce la fecha de nacimiento del corredor -> dd/mm/aa");
 		userBirhtDate[totalUsers] = LocalDate.parse(userInput.nextLine(), DateTimeFormatter.ofPattern("d/M/y"));
 		
 		userCategory[totalUsers] = getUserCategory(userBirhtDate[totalUsers]);
-		totalUsers = totalUsers + 1;
-		userInput.close();		
+		
+		System.out.printf("%n[+] Usuario registrado %n[+] TOTAL: %d %n%n", totalUsers + 1);
+		return ++totalUsers;
 	}
 	
 	static int getUserBib(int[] usersBib, int totalUsers) {
