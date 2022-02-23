@@ -36,8 +36,10 @@
     <fullyQualifiedTypeName name="models.Alumno"/>
     <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
     <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.io.PrintStream"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="modules.Player"/>
+    <fullyQualifiedTypeName name="modules.Team"/>
 </qualifiedTypeNameHistroy>
