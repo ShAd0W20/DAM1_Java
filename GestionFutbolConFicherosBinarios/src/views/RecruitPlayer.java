@@ -9,14 +9,13 @@ import java.util.Scanner;
 
 import models.Player;
 
-public class EditPlayerScores {
-
-	public static void editPlayerScores() throws FileNotFoundException, IOException {
+public class RecruitPlayer {
+	public static void editPlayerTeam() throws FileNotFoundException, IOException {
 		File file = new File("Players.bin");
 		RandomAccessFile raf = new RandomAccessFile(file, "rw");
 		Scanner input = new Scanner(System.in);
 		String playerNameToSearch = "";
-		int playerScores = 0;		
+		String playerNewTeam = "";		
 
 		ArrayList<Player> players = new ArrayList<Player>();
 
@@ -31,13 +30,12 @@ public class EditPlayerScores {
 			players.add(player);
 		}
 		
-		System.out.println("A que jugador desea modificar los goles | [Salir] para salir");
+		System.out.println("A que jugador desea modificar el equipo | [Salir] para salir");
 		do {
 			playerNameToSearch = input.nextLine();
 			
-			System.out.println("Introduce los goles anotados");
-			playerScores = input.nextInt();
-			input.nextLine();
+			System.out.println("Introduce el nuevo equipo");
+			playerNewTeam = input.nextLine();			
 			
 			int i = 0;
 			while(!playerNameToSearch.equals(players.get(i).getPlayerName()) && i < players.size() - 1) {
@@ -45,13 +43,16 @@ public class EditPlayerScores {
 			}
 			if(playerNameToSearch.equals(players.get(i).getPlayerName())) {
 				raf.seek(0);
-				raf.skipBytes((i * 73) + 69);
-				raf.writeInt((players.get(i).getPlayerScores() + playerScores));
+				raf.skipBytes((i * 73) + 37);
+				if(playerNewTeam.length() < 30) {
+					raf.writeUTF(String.format("%-30s", playerNewTeam));
+				} else {
+					raf.writeUTF(playerNewTeam.substring(0, 29));
+				}
 			}
 			System.out.println("A que jugador desea modificar los goles | [Salir] para salir");
 		} while(!playerNameToSearch.equalsIgnoreCase("salir"));
 
 		raf.close();
 	}
-
 }

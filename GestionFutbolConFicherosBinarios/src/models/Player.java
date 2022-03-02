@@ -2,11 +2,11 @@ package models;
 
 public class Player {
 	private boolean isDeleted = false; //1
-	private String playerName; //22
-	private String playerPosition; //10
-	private int playerNum; //4
-	private String playerTeam; //32
-	private int playerScores; //4
+	private String playerName;         //22
+	private String playerPosition;     //10
+	private int playerNum;             //4
+	private String playerTeam;         //32
+	private int playerScores;          //4
 
 	public boolean isDeleted() {
 		return isDeleted;

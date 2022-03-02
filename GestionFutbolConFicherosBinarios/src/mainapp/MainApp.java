@@ -6,7 +6,10 @@ import java.util.Scanner;
 
 import views.AddPlayer;
 import views.EditPlayerScores;
-import views.ListPlayers;
+import views.RecruitPlayer;
+import views.lists.BestGoalKeeper;
+import views.lists.ListPlayers;
+import views.lists.MaximumScore;
 
 public class MainApp {
 
@@ -28,15 +31,19 @@ public class MainApp {
 				ListPlayers.listPlayers();
 				break;
 			case "3":
-				EditPlayerScores.editPlayerScores();
+				RecruitPlayer.editPlayerTeam();
 				break;
 			case "4":
+				
 				break;
 			case "5":
+				EditPlayerScores.editPlayerScores();
 				break;
 			case "6":
+				MaximumScore.listPlayers();
 				break;
 			case "7":
+				BestGoalKeeper.listPlayers();
 				break;
 			default:
 				if(!mainMenuOption.equalsIgnoreCase("salir")) {
@@ -46,6 +53,7 @@ public class MainApp {
 		} while(!mainMenuOption.equalsIgnoreCase("salir"));
 		
 		input.close();
+		System.out.printf("%n%n[!] Saliendo... %n");
 	}
 
 }
