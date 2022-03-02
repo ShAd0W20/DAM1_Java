@@ -21,6 +21,7 @@
 <item elementID="=P2_3_Control_Alumnos" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/P2_5_Control_Meteorologia" type="4"/>
 <item elementID="=Clases" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=GestionFutbolConFicherosBinarios" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=ExamenFicheros_24_02_2022" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=P2_4_Gestion_Jugadores" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=Registros" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
