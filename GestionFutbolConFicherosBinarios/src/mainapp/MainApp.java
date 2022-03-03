@@ -5,11 +5,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import views.AddPlayer;
-import views.EditPlayerScores;
-import views.RecruitPlayer;
-import views.lists.BestGoalKeeper;
+import views.EditPlayer;
+import views.PurgeFile;
 import views.lists.ListPlayers;
-import views.lists.MaximumScore;
 
 public class MainApp {
 
@@ -18,7 +16,7 @@ public class MainApp {
 		String mainMenuOption = "";
 		
 		
-		System.out.format("%s %n %s %n %s %n %s %n %s %n %s %n %s %n %s %n %s %n", "Que desea hacer?", "[1] Registrar jugador", "[2] Listar jugadores", "[3] Fichar jugador", "[4] Borrar jugador", "[5] Registrar goles", "[6] Clasificacion goleadores", "[7] Clasificacion porteros", "[Salir] para salir del programa");
+		System.out.format("%s %n %s %n %s %n %s %n %s %n %s %n %s %n %s %n %s %n %s %n", "Que desea hacer?", "[1] Registrar jugador", "[2] Listar jugadores", "[3] Fichar jugador", "[4] Borrar jugador", "[5] Registrar goles", "[6] Clasificacion goleadores", "[7] Clasificacion porteros", "[8] Purgar archivo" ,"[Salir] para salir del programa");
 		
 		do {
 			mainMenuOption = input.nextLine();
@@ -28,26 +26,29 @@ public class MainApp {
 				AddPlayer.registerPlayer();
 				break;
 			case "2":
-				ListPlayers.listPlayers();
+				ListPlayers.listAllPlayersByTeam();
 				break;
 			case "3":
-				RecruitPlayer.editPlayerTeam();
+				EditPlayer.editPlayerTeam();
 				break;
 			case "4":
-				
+				EditPlayer.updateDeleted();
 				break;
 			case "5":
-				EditPlayerScores.editPlayerScores();
+				EditPlayer.editPlayerScores();
 				break;
 			case "6":
-				MaximumScore.listPlayers();
+				ListPlayers.listBestScorePlayers();
 				break;
 			case "7":
-				BestGoalKeeper.listPlayers();
+				ListPlayers.listBestGoalKeeper();
+				break;
+			case "8":
+				PurgeFile.purge();
 				break;
 			default:
 				if(!mainMenuOption.equalsIgnoreCase("salir")) {
-					System.out.format("%s %n %s %n %s %n %s %n %s %n %s %n %s %n %s %n %s %n", "Que desea hacer?", "[1] Registrar jugador", "[2] Listar jugadores", "[3] Fichar jugador", "[4] Borrar jugador", "[5] Registrar goles", "[6] Clasificacion goleadores", "[7] Clasificacion porteros", "[Salir] para salir del programa");
+					System.out.format("%s %n %s %n %s %n %s %n %s %n %s %n %s %n %s %n %s %n %s %n", "Que desea hacer?", "[1] Registrar jugador", "[2] Listar jugadores", "[3] Fichar jugador", "[4] Borrar jugador", "[5] Registrar goles", "[6] Clasificacion goleadores", "[7] Clasificacion porteros", "[8] Purgar archivo" ,"[Salir] para salir del programa");
 				}
 			}
 		} while(!mainMenuOption.equalsIgnoreCase("salir"));
