@@ -1,0 +1,4 @@
+Manolo,Portero,Barcelona
+Lola,Defensa,Palamos
+Maria,Delantero,Barcelona
+Maria,Delantero,Barcelona
