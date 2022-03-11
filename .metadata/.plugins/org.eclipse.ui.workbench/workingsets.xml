@@ -31,6 +31,7 @@
 <item elementID="=Examen_04_03_2022" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=SortBinaryFile" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=StudentGradesWithBinaryFiles" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Examen_Ficheros_Binarios_11_03_2022" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1642173857830_3" label="Window Working Set" name="Aggregate for window 1642173857830"/>
 <mruList name="Programación Modular"/>
