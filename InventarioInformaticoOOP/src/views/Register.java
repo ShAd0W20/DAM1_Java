@@ -26,7 +26,7 @@ public class Register {
 	}
 	
 	public static void RegisterNewComputer(Inventario inventario) {
-		String codigo = ConsoleHelper.readString("Introduce el codigo del portatil: ");
+		String codigo = ConsoleHelper.readString("Introduce el codigo del ordenador: ");
 		String marca = ConsoleHelper.readString("Introduce la marca: ");
 		String modelo = ConsoleHelper.readString("Introduce el modelo: ");
 		String ubicacion = ConsoleHelper.readString("Introduce la ubicacion donde se encuentra: ");
@@ -42,7 +42,7 @@ public class Register {
 	}
 	
 	public static void RegisterNewPrinter(Inventario inventario) {
-		String codigo = ConsoleHelper.readString("Introduce el codigo del portatil: ");
+		String codigo = ConsoleHelper.readString("Introduce el codigo de la impresora: ");
 		String marca = ConsoleHelper.readString("Introduce la marca: ");
 		String modelo = ConsoleHelper.readString("Introduce el modelo: ");
 		String ubicacion = ConsoleHelper.readString("Introduce la ubicacion donde se encuentra: ");
@@ -55,7 +55,7 @@ public class Register {
 	}
 	
 	public static void RegisterNewProjector(Inventario inventario) {
-		String codigo = ConsoleHelper.readString("Introduce el codigo del portatil: ");
+		String codigo = ConsoleHelper.readString("Introduce el codigo del proyector: ");
 		String marca = ConsoleHelper.readString("Introduce la marca: ");
 		String modelo = ConsoleHelper.readString("Introduce el modelo: ");
 		String ubicacion = ConsoleHelper.readString("Introduce la ubicacion donde se encuentra: ");

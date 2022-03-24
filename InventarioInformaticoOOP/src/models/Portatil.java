@@ -1,7 +1,13 @@
 package models;
 
-public class Portatil extends Ordenador {
+import java.io.Serializable;
 
+public class Portatil extends Ordenador implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3532678287391484792L;
 	private int pulgadasPantalla;
 	private String conexionExterna;
 	

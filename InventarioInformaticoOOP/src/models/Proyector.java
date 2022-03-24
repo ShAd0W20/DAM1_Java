@@ -1,7 +1,13 @@
 package models;
 
-public class Proyector extends Equipo {
+import java.io.Serializable;
 
+public class Proyector extends Equipo implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8594552372132921636L;
 	private String conectorActual;
 	private int lumnes;
 	private String resolucion;

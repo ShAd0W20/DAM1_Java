@@ -1,7 +1,13 @@
 package models;
 
-public class Ordenador extends Equipo {
+import java.io.Serializable;
 
+public class Ordenador extends Equipo implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int ram;
 	private String procesador;
 	private String discoDuro;

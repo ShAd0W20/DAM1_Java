@@ -1,8 +1,13 @@
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventario {
+public class Inventario implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String codigoCentro;
 	private String nombreCentro;
 	private ArrayList<Sobremesa> sobremesas;

@@ -2,13 +2,16 @@ package controllers;
 
 import models.Inventario;
 import utils.ConsoleHelper;
+import utils.SaveLoadData;
 import views.Delete;
+import views.List;
 import views.Register;
 
 public class Controller {
-	static Inventario inventario = new Inventario("", "");
+	static Inventario inventario = null;
 	
 	public void run() {
+		inventario = SaveLoadData.loadData(inventario);
 		mainMenu();
 	}
 	
@@ -54,7 +57,13 @@ public class Controller {
 				int listOpt = ConsoleHelper.choseOption(0, 4);
 				switch (listOpt) {
 				case 1:
-					
+					List.listAllLapTops(inventario);
+					break;
+				case 2:
+					List.listByLocation(inventario);
+					break;
+				case 3:
+					List.listGroupByLocation(inventario);
 					break;
 				case 0:
 					break;
@@ -84,6 +93,8 @@ public class Controller {
 			}
 		} while (opt != 0);
 
+		SaveLoadData.saveData(inventario);
+		
 		System.out.printf("%n%n[!] Saliendo... %n");
 	}
 	

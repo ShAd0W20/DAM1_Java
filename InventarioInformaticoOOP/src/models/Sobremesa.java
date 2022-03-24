@@ -1,7 +1,13 @@
 package models;
 
-public class Sobremesa extends Ordenador {
+import java.io.Serializable;
 
+public class Sobremesa extends Ordenador implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2533016223682275074L;
 	private String pantalla;
 	private String tipoPerifericos;
 	

@@ -1,6 +1,13 @@
 package models;
 
-public class Equipo {
+import java.io.Serializable;
+
+public class Equipo implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8538299009632123585L;
 	private String codigo;
 	private String marca;
 	private String modelo;
