@@ -2,7 +2,7 @@ package models;
 
 import java.time.LocalDate;
 
-public class Persona {
+public abstract class Persona {
 	protected String name;
 	private LocalDate birthDate;
 	private String dni;
@@ -35,5 +35,10 @@ public class Persona {
 
 	public void setDni(String dni) {
 		this.dni = dni;
+	}
+	
+	@Override
+	public String toString() {
+		return "\nPersona \n[Nombre] : " + this.getName() + " \n[Fecha nacimiento] : " + this.getBirthDate();
 	}
 }
