@@ -2,7 +2,7 @@ package models;
 
 import java.io.Serializable;
 
-public class Equipo implements Serializable {
+public abstract class Equipo implements Serializable {
 	
 	/**
 	 * 
