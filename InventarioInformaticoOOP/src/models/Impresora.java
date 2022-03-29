@@ -1,7 +1,13 @@
 package models;
 
-public class Impresora extends Equipo {
+import java.io.Serializable;
 
+public class Impresora extends Equipo implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8493682201233971317L;
 	private String tipo;
 	private String conexionActual;
 	

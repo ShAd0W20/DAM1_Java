@@ -7,7 +7,7 @@ public abstract class Ordenador extends Equipo implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8707118346760611253L;
 	private int ram;
 	private String procesador;
 	private String discoDuro;
