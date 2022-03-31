@@ -65,6 +65,12 @@ public class Controller {
 				case 3:
 					List.listGroupByLocation(inventario);
 					break;
+				case 4:
+					List.listGroupByType(inventario);
+					break;
+				case 5:
+					List.listGroupByState(inventario);
+					break;
 				case 0:
 					break;
 				}
