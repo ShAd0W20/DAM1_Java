@@ -27,5 +27,9 @@ public class Resultado {
 	public Duration getTiempoMaraton() {
 		return tiempoMaraton;
 	}
+	
+	public void setTiempoMaraton(Duration time) {
+		this.tiempoMaraton = time;
+	}
 
 }

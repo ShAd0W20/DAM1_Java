@@ -10,17 +10,36 @@ public class Corredor extends Persona {
 	private Duration MejorTiempo21KM;
 	private Duration MejorTiempo42KM;
 
-	public Corredor(String dNI, String nombre, LocalDate fechaNacimiento, Duration mejorTiempo10KM, Duration mejorTiempo21KM, Duration mejorTiempo42KM) {
-		super(dNI, nombre, fechaNacimiento);
+	public Corredor(String dNI, String nombre, String sexo, LocalDate fechaNacimiento, Duration mejorTiempo10KM, Duration mejorTiempo21KM, Duration mejorTiempo42KM) {
+		super(dNI, nombre, sexo, fechaNacimiento);
 		MejorTiempo10KM = mejorTiempo10KM;
 		MejorTiempo21KM = mejorTiempo21KM;
 		MejorTiempo42KM = mejorTiempo42KM;
+		this.setCategoria();
 	}
 
 	public String getCategoria() {
 		return categoria;
 	}
-
+	
+	private void setCategoria() {
+		if(this.getAge() > 50) {
+			if(this.getSexo().equals("Masculino")) {
+				this.categoria = "Veterano Masculino";
+			}
+			else {
+				this.categoria = "Veterano Femenino";
+			}
+		} else {
+			if(this.getSexo().equals("Masculino")) {
+				this.categoria = "Absoluto Masculino";
+			}
+			else {
+				this.categoria = "Absoluto Femenino";
+			}
+		}
+	}
+	
 	public Duration getMejorTiempo10KM() {
 		return MejorTiempo10KM;
 	}
