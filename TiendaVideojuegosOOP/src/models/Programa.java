@@ -1,10 +1,17 @@
 package models;
 
-import enums.OSTypes;
-import enums.ProgramTypes;
+import models.enums.ProgramTypes;
 
-public class Programa extends Producto {
+import java.io.Serializable;
 
+import models.enums.OSTypes;
+
+public class Programa extends Producto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3080829333241378548L;
 	private ProgramTypes type;
 	private OSTypes osType;
 
@@ -22,4 +29,8 @@ public class Programa extends Producto {
 		return osType.getOsType();
 	}
 
+	@Override
+	public String toString() {
+		return String.format("%-10s %-10s %-10s %-10s %-10s %n", this.getCode(), this.getName(), this.getPrice(), this.getSells(), this.getStock());
+	}
 }

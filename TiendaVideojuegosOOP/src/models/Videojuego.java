@@ -1,10 +1,17 @@
 package models;
 
-import enums.ConsoleTypes;
-import enums.GameTypes;
+import models.enums.GameTypes;
 
-public class Videojuego extends Producto {
+import java.io.Serializable;
 
+import models.enums.ConsoleTypes;
+
+public class Videojuego extends Producto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6097750892781998592L;
 	private GameTypes type;
 	private ConsoleTypes console;
 

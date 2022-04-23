@@ -11,15 +11,9 @@ public class ConsoleHelper {
 		System.out.println("Elige una opción: ");
 	}
 	
-	public static void printRegisterMenu() {
-		System.out.println("Que desea hacer?");
-		System.out.println("[1] Registrar piloto \n[2] Registrar equipo \n[3] Registrar circuito \n[4] Registrar carrera \n[0] Salir");
-		System.out.println("Elige una opción: ");
-	}
-	
 	public static void printEditMenu() {
 		System.out.println("Que desea hacer?");
-		System.out.println("[1] Editar piloto \n[2] Editar equipo \n[3] Editar circuito \n[4] Editar carrera \n[0] Salir");
+		System.out.println("[1] Registrar producto \n[2] Añadir stock \n[3] Borrar producto \n[4] Listar productos \n[5] Listar productos vendidos \n[0] Salir");
 		System.out.println("Elige una opción: ");
 	}
 	
@@ -65,6 +59,11 @@ public class ConsoleHelper {
 		System.out.println(what);
 		return sc.nextLine();
 	}
+	
+	public static String readFormatedString(String what) {
+		System.out.printf(what);
+		return sc.nextLine();
+	}
 
 	public static int readInteger(String what) {
 		System.out.println(what);
@@ -80,23 +79,20 @@ public class ConsoleHelper {
 		}
 		return integerToRead;
 	}
-
-	public static boolean readYesNo(String what) {
-		boolean isNumber = false;
-		int opc = 0;
+	
+	public static double readDouble(String what) {
 		System.out.println(what);
-		while (!isNumber) {
+		boolean isDouble = false;
+		double doubleToRead = 0;
+		while (!isDouble) {
 			try {
-				opc = Integer.parseInt(sc.nextLine());
-				while (opc < 0 || opc > 1) {
-					System.out.println("ERROR: Por favor, elige una opción entre " + 0 + " (no) y " + 1 + "(sí)");
-					opc = Integer.parseInt(sc.nextLine());
-				}
-				isNumber = true;
+				doubleToRead = Double.parseDouble(sc.nextLine());
+				isDouble = true;
 			} catch (NumberFormatException e) {
-				System.out.println("ERROR: Introduce números del " + 0 + " (no) y " + 1 + "(sí)");
+				System.out.println("ERROR: Introduce un número válido");
 			}
 		}
-		return opc == 1;
+		return doubleToRead;
+		
 	}
 }

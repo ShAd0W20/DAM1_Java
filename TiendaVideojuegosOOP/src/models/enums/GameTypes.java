@@ -1,4 +1,4 @@
-package enums;
+package models.enums;
 
 public enum GameTypes {
 	ACCION("Accion"), ARCADE("Arcade"), DEPORTIVO("Deportivo"), ESTRATEGIA("Estrategia"), SIMULACION("Simulacion");

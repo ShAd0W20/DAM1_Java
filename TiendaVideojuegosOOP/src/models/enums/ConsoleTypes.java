@@ -1,4 +1,4 @@
-package enums;
+package models.enums;
 
 public enum ConsoleTypes {
 	PS4("PS4"), PS5("PS5"), XBOX("XBox"), PC("PC");

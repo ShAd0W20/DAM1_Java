@@ -1,4 +1,4 @@
-package enums;
+package models.enums;
 
 public enum ProgramTypes {
 	PROCESADORTEXT("Procesador de texto"), HOJASDECALCULO("Hojas de calculo"), PRESENTACIONES("Presentaciones");

@@ -1,4 +1,4 @@
-package enums;
+package models.enums;
 
 public enum OSTypes {
 	WINDOWS("Windows"), MACOS("MacOS"), LINUX("Linux");

@@ -1,6 +1,6 @@
 package mainapp;
 
-import Controllers.Controller;
+import controllers.Controller;
 
 public class MainApp {
 

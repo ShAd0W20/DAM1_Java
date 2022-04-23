@@ -1,9 +1,14 @@
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Tienda {
+public class Tienda implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4227726431181889261L;
 	private ArrayList<Producto> products;
 	private ArrayList<Producto> soltProducts;
 	
@@ -13,7 +18,7 @@ public class Tienda {
 	}
 	
 	public boolean addProduct(Producto p) {
-		if(findProductInShoop(p.getCode(), products) == null) {
+		if(findProductInShoop(p.getCode(), this.products) == null) {
 			this.products.add(p);
 			return true;
 		}
@@ -37,23 +42,23 @@ public class Tienda {
 	}
 	
 	public String buyProduct(String productID) {
-		if(findProductInShoop(productID, products) == null) {
+		if(findProductInShoop(productID, this.products) == null) {
 			return "Product not found";
 		}
 		
-		if(findProductInShoop(productID, products) != null) {
-			if(findProductInShoop(productID, products).getStock() <= 0) {
+		if(findProductInShoop(productID, this.products) != null) {
+			if(findProductInShoop(productID, this.products).getStock() <= 0) {
 				return "Product has no stock";
 			} else {
-				findProductInShoop(productID, products).addStock(-1);
+				findProductInShoop(productID, this.products).addStock(-1);
 			}
 		}
 		
-		if(soltProducts.contains(findProductInShoop(productID, soltProducts))) {
-			soltProducts.get(soltProducts.indexOf(findProductInShoop(productID, soltProducts))).addSells(1);
+		if(this.soltProducts.contains(findProductInShoop(productID, this.soltProducts))) {
+			this.soltProducts.get(this.soltProducts.indexOf(findProductInShoop(productID, this.soltProducts))).addSells(1);
 		} else {
-			findProductInShoop(productID, products).addSells(1);
-			soltProducts.add(findProductInShoop(productID, products));
+			findProductInShoop(productID, this.products).addSells(1);
+			this.soltProducts.add(findProductInShoop(productID, this.products));
 		}
 		
 		return "";		
