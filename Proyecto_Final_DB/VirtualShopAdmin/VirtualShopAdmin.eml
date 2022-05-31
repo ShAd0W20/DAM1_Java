@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component jdk="17" jdk_type="JavaSDK">
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="checker-qual-3.5.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/checker-qual-3.5.0.jar!/"/>
+	</lib>
+	<lib name="itextpdf-5.5.6.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/itextpdf-5.5.6.jar!/"/>
+	</lib>
+	<lib name="postgresql-42.3.5.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/postgresql-42.3.5.jar!/"/>
+	</lib>
+</component>

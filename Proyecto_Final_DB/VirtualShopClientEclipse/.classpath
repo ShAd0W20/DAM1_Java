@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-16">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/shad0wstv/Documents/GitHub/GBORDOYDAM1PROJECTE/lib/annotations-20.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/shad0wstv/Documents/GitHub/GBORDOYDAM1PROJECTE/lib/checker-qual-3.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/shad0wstv/Documents/GitHub/GBORDOYDAM1PROJECTE/lib/itextpdf-5.5.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/shad0wstv/Documents/GitHub/GBORDOYDAM1PROJECTE/lib/postgresql-42.3.5.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
